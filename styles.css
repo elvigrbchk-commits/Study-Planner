@@ -38,3 +38,26 @@ a:hover{
     color: #ffe2f6;
 
 }
+.footer {
+    background-color: #ffa6ea;
+    color: #ffe2f6;
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer-link{
+    border-radius: 10px;
+}
+.footer-links{
+    display: flex;
+    gap: 15px;
+    flex-direction: row;
+}
