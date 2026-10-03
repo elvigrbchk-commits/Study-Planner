@@ -278,3 +278,9 @@
         padding: 18px;
     }
 }
+
+.footer {
+    position: static;
+    bottom: auto;
+    margin-top: 32px;
+}

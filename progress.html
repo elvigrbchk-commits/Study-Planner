@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress | Study Planner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="progress.css">
+</head>
+<body>
+    <header class="container">
+        <img src="images/logo pink.png" alt="Study Planner" class="logoHat">
+
+        <nav class="menu">
+            <a href="index.html">Dashboard</a>
+            <a href="subjects.html">Subjects</a>
+            <a href="tasks.html">Tasks</a>
+            <a href="calendar.html">Calendar</a>
+            <a href="progress.html" class="dash" aria-current="page">Progress</a>
+        </nav>
+    </header>
+
+    <main class="progress-page">
+        <section class="progress-intro">
+            <h1>My progress</h1>
+            <p>Every completed task brings you closer to your goals.</p>
+        </section>
+
+        <section class="progress-summary" aria-label="Progress summary">
+            <article class="progress-card">
+                <h2>Completed tasks</h2>
+                <p class="progress-number">9 / 15</p>
+            </article>
+
+            <article class="progress-card">
+                <h2>Overall progress</h2>
+                <p class="progress-number">60%</p>
+            </article>
+        </section>
+
+        <section class="subject-progress">
+            <h2>Progress by subject</h2>
+
+            <article class="subject-row">
+                <div class="subject-heading">
+                    <h3>
+                        <label for="os-progress">Operating Systems</label>
+                    </h3>
+                    <p>4 of 5 tasks completed</p>
+                </div>
+
+                <div class="progress-track">
+                    <progress id="os-progress" value="4" max="5">80%</progress>
+                    <span>80%</span>
+                </div>
+            </article>
+
+            <article class="subject-row">
+                <div class="subject-heading">
+                    <h3>
+                        <label for="web-progress">WEB Technologies 1</label>
+                    </h3>
+                    <p>3 of 5 tasks completed</p>
+                </div>
+
+                <div class="progress-track">
+                    <progress id="web-progress" value="3" max="5">60%</progress>
+                    <span>60%</span>
+                </div>
+            </article>
+
+            <article class="subject-row">
+                <div class="subject-heading">
+                    <h3>
+                        <label for="patterns-progress">Software Design Patterns</label>
+                    </h3>
+                    <p>2 of 5 tasks completed</p>
+                </div>
+
+                <div class="progress-track">
+                    <progress id="patterns-progress" value="2" max="5">40%</progress>
+                    <span>40%</span>
+                </div>
+            </article>
+
+            <p class="progress-note">
+                Sample progress for the current study week.
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 STUDY PLANNER</p>
+
+        <div class="footer-links">
+            <a href="contact.html" class="footer-link">Contact us</a>
+            <a href="about.html" class="footer-link">About us</a>
+        </div>
+    </footer>
+</body>
+</html>
