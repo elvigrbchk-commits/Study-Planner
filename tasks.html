@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks | Study Planner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="tasks.css">
+</head>
+<body>
+    <header class="container">
+        <img src="images/logo pink.png" alt="Study Planner" class="logoHat">
+
+        <nav class="menu">
+            <a href="index.html">Dashboard</a>
+            <a href="subjects.html">Subjects</a>
+            <a href="tasks.html" class="dash" aria-current="page">Tasks</a>
+            <a href="calendar.html">Calendar</a>
+            <a href="progress.html">Progress</a>
+        </nav>
+    </header>
+
+    <main class="tasks-page">
+    <section class="tasks-intro">
+        <h1>My Tasks</h1>
+        <p>Keep going! Small steps make big progress.</p>
+    </section>
+
+    <section class="tasks-summary">
+        <div class="summary-card">
+            <h2>Today's Tasks</h2>
+            <p class="summary-number">3</p>
+            <p>Tasks to focus on</p>
+        </div>
+
+        <div class="summary-card">
+            <h2>Upcoming Deadlines</h2>
+            <p class="summary-number">3</p>
+            <p>Assignments due this week</p>
+        </div>
+
+        <div class="summary-card">
+            <h2>Overall Progress</h2>
+            <p class="summary-number">60%</p>
+            <p>Example study progress</p>
+        </div>
+    </section>
+
+    <div class="tasks-layout">
+        <div class="tasks-left">
+            <section class="subjects-section">
+                <h2>My Subjects</h2>
+
+                <div class="subject-cards">
+                    <article class="subject-card">
+                        <h3>Operating Systems</h3>
+                        <p>Linux commands and shell scripts.</p>
+                    </article>
+
+                    <article class="subject-card">
+                        <h3>WEB Technologies 1</h3>
+                        <p>HTML, CSS and responsive layouts.</p>
+                    </article>
+
+                    <article class="subject-card">
+                        <h3>Software Design Patterns</h3>
+                        <p>Reusable solutions for software design.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="upcoming-section">
+                <h2>Upcoming Tasks</h2>
+
+                <article class="task-item">
+                    <input type="checkbox" id="task-os">
+
+                    <div class="task-info">
+                        <h3>
+                            <label for="task-os">Complete Linux assignment</label>
+                        </h3>
+                        <p>Operating Systems</p>
+                        <span>Due: 5 October 2026</span>
+                    </div>
+                </article>
+
+                <article class="task-item">
+                    <input type="checkbox" id="task-web">
+
+                    <div class="task-info">
+                        <h3>
+                            <label for="task-web">Create the Tasks page</label>
+                        </h3>
+                        <p>WEB Technologies 1</p>
+                        <span>Due: 7 October 2026</span>
+                    </div>
+                </article>
+
+                <article class="task-item">
+                    <input type="checkbox" id="task-patterns">
+
+                    <div class="task-info">
+                        <h3>
+                            <label for="task-patterns">Review the Bridge pattern</label>
+                        </h3>
+                        <p>Software Design Patterns</p>
+                        <span>Due: 9 October 2026</span>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <aside class="tasks-sidebar">
+            <section class="goals-card">
+                <h2>Study Goals</h2>
+
+                <div class="goal-item">
+                    <input type="checkbox" id="goal-linux">
+                    <label for="goal-linux">Practise Linux commands</label>
+                </div>
+
+                <div class="goal-item">
+                    <input type="checkbox" id="goal-css">
+                    <label for="goal-css">Revise Flexbox and Grid</label>
+                </div>
+
+                <div class="goal-item">
+                    <input type="checkbox" id="goal-patterns">
+                    <label for="goal-patterns">Understand the Bridge pattern</label>
+                </div>
+            </section>
+
+            <section class="focus-card">
+                <h2>Today's Focus</h2>
+
+                <label for="daily-focus">My main study goal</label>
+                <textarea
+                    id="daily-focus"
+                    name="daily-focus"
+                    rows="5"
+                    placeholder="What would you like to finish today?"
+                ></textarea>
+
+                <p>Your note is not saved after leaving this page.</p>
+            </section>
+        </aside>
+    </div>
+</main>
+
+
+</body>
+</html>
