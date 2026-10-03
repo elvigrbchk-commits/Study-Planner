@@ -83,7 +83,9 @@ a:hover{
 }
 
 .dashboard-header button {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: #ffa6ea;
+    color:#ffe2f6;
     border: none;
     border-radius: 20px;
     padding: 12px 25px;
@@ -160,4 +162,72 @@ a:hover{
     height: 100%;
     background-color: #ffa6ea;
     border-radius: 20px;
+}
+.add-task {
+    position: relative;
+}
+
+.add-task summary {
+    color: #ffe2f6;
+    background-color: #ffa6ea;
+    border-radius: 20px;
+    padding: 12px 25px;
+    cursor: pointer;
+    list-style: none;
+    display: inline-block;
+}
+
+.task-form {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    background-color: #ffe2f6;
+    border: 2px solid #ffa6ea;
+    border-radius: 20px;
+    padding: 20px;
+    width: 250px;
+    box-sizing: border-box;
+    margin-top: 0;
+}
+
+.task-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.task-form input {
+    border: 1px solid #ffa6ea;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: inherit;
+}
+
+.task-form button {
+    background-color: #ffa6ea;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+}
+.add-task summary:hover {
+    background-color: #fb6cce;
+    color: #ffe2f6;
+}
+.task-form button:hover {
+    background-color: #fb6cce;
+    color: #ffe2f6;
+}
+.add-task summary {
+    transition: 0.2s;
+}
+
+.task-form button {
+    transition: 0.2s;
 }

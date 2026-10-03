@@ -13,7 +13,7 @@
                 <a href="index.html"  class="dash">Dashboard</a>
                 <a href="" >Subjects</a>
                 <a href="tasks.html" >Tasks</a>
-                <a href="" >Calendar</a>
+                <a href="Calendar.html" >Calendar</a>
                 <a href="progress.html" >Progress</a>
             </nav>
         </header>
@@ -21,9 +21,32 @@
   <main class="dashboard">
 
         <div class="dashboard-header">
-            <h1>Dashboard</h1>
-            <button>+ Add task</button>
+    <h1>Dashboard</h1>
+
+    <details class="add-task">
+        <summary>+ Add task</summary>
+
+        <div class="task-form">
+           
+            <label>
+                Subject
+                <input type="text" placeholder="Enter subject">
+            </label>
+
+            <label>
+                Task
+                <input type="text" placeholder="Enter task">
+            </label>
+
+            <label>
+                Date
+                <input type="date">
+            </label>
+
+            <button type="submit">Add</button>
         </div>
+    </details>
+</div>
 
         <section class="dashboard-cards">
 

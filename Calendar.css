@@ -1,0 +1,151 @@
+.logoHat{
+    width: 200px;
+    filter: brightness(1.1);
+}
+.container{
+    background-color: #ffa6ea;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:#ff87e3;
+    background-color: #ffe2f6;
+    margin: 0;
+}
+a{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:#ff87e3;
+    background-color: #ffe2f6;
+    border-radius: 20px;
+    text-decoration: none;
+    width: 200px;
+    padding: 10px 0;
+    text-align: center;
+}
+a:hover{
+    color:rgb(167, 0, 97);
+}
+.menu{
+    font-size: 30px;
+    display: flex;
+    gap: 20px;
+    padding-right: 40px;
+}
+.calendar{
+    background-color: #fb6cce;
+    color: #ffe2f6;
+
+}
+.footer {
+    background-color: #ffa6ea;
+    color: #ffe2f6;
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer-link{
+    border-radius: 10px;
+}
+.footer-links{
+    display: flex;
+    gap: 15px;
+    flex-direction: row;
+}
+
+.calendar-page {
+    max-width: 1000px;
+    margin: 40px auto 100px;
+    padding: 0 40px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calendar-header h1 {
+    font-size: 32px;
+}
+
+.month {
+    background-color: #ffe2f6;
+    border: 2px solid #ffa6ea;
+    border-radius: 50px;
+    padding: 20px 20px;
+    font-size: 20px;
+}
+.upcoming {
+    padding: 10px 5px;
+}
+
+.upcoming h2 {
+    margin: 0 0 5px;
+    font-size: 20px;
+}
+
+.upcoming p {
+    margin: 3px 0;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.days div {
+    height: 90px;
+    border: 1px solid #ffa6ea;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.days div:nth-child(14n) {
+    background-color: #ffe2f6;
+}
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.weekdays div {
+    background-color: #ffa6ea;
+    color: #ffe2f6;
+    height: 50px;
+    padding: 15px;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: bold;
+}
+.calendar-box {
+    border: 3px solid #ffa6ea;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 30px;
+}
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-radius: 0 0 20px 20px;
+    overflow: hidden;
+    border: 2px solid #ffa6ea;
+}
