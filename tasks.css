@@ -22,8 +22,7 @@ body {
 
 .logoHat {
     width: 200px;
-    filter: brightness(1.1);
-}
+    filter: hue-rotate(50deg) brightness(1.18);}
 
 .container {
     width: 100%;
