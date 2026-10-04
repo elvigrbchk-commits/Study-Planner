@@ -7,110 +7,233 @@
 
     <title>Subjects | Study Planner</title>
 
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Main styles -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="subjects.css">
+
+    <link rel="icon" type="image/x-icon" href="./images/favicon SP.ico">
 </head>
 
 <body>
 
-    <header class="container">
-        <img src="images/logo pink.png" alt="Study Planner" class="logoHat">
+    <!-- HEADER -->
+    <header class="site-header">
+
+        <img src="images/logo pink.png"
+             alt="Study Planner"
+             class="logoHat">
 
         <nav class="menu">
             <a href="index.html">Dashboard</a>
-            <a href="subjects.html" class="active" aria-current="page">Subjects</a>
+
+            <a href="subjects.html"
+               class="active"
+               aria-current="page">
+                Subjects
+            </a>
+
             <a href="tasks.html">Tasks</a>
             <a href="Calendar.html">Calendar</a>
             <a href="progress.html">Progress</a>
         </nav>
+
     </header>
 
+
+    <!-- MAIN -->
     <main class="subjects-page">
 
-    <div class="subjects-header">
-        <div>
-            <h1>My Subjects</h1>
-            <p>Manage your subjects and track your study progress.</p>
-        </div>
+        <!-- INTRO -->
+        <section class="subjects-header">
 
-        <button class="add-button">+ Add Subject</button>
-    </div>
-
-
-    <div class="subjects-grid">
-
-        <div class="subject-card">
-            <div class="card-title">
-                <h2>Operating Systems</h2>
-                <span>60%</span>
+            <div>
+                <h1>My Subjects</h1>
+                <p>Manage your subjects and track your study progress.</p>
             </div>
 
-            <p class="description">Linux commands and shell scripts.</p>
-            <p>5 Tasks</p>
 
-            <div class="progress">
-                <div class="progress-bar" style="width: 60%;"></div>
+            <!-- ADD SUBJECT -->
+            <details class="add-subject">
+
+                <summary>+ Add Subject</summary>
+
+                <form class="subject-form">
+
+                    <label>
+                        Subject Name
+                        <input type="text"
+                               placeholder="Enter subject">
+                    </label>
+
+                    <label>
+                        Description
+                        <input type="text"
+                               placeholder="Enter description">
+                    </label>
+
+                    <label>
+                        Number of Tasks
+                        <input type="number"
+                               min="0"
+                               placeholder="Enter tasks">
+                    </label>
+
+                    <button type="submit">Add</button>
+
+                </form>
+
+            </details>
+
+        </section>
+
+
+        <!-- SUBJECT CARDS -->
+        <!-- Bootstrap Grid -->
+        <section class="subjects-grid row g-4">
+
+
+            <!-- OPERATING SYSTEMS -->
+            <div class="col-12 col-md-6">
+
+                <article class="subject-card h-100">
+
+                    <div class="card-title">
+                        <h2>Operating Systems</h2>
+                        <span>60%</span>
+                    </div>
+
+                    <p class="description">
+                        Linux commands and shell scripts.
+                    </p>
+
+                    <p>5 Tasks</p>
+
+                    <div class="progress">
+                        <div class="progress-bar"
+                             style="width: 60%;"
+                             role="progressbar"
+                             aria-valuenow="60"
+                             aria-valuemin="0"
+                             aria-valuemax="100">
+                        </div>
+                    </div>
+
+                    <a href="#">View Subject</a>
+
+                </article>
+
             </div>
 
-            <a href="#">View Subject</a>
-        </div>
 
+            <!-- WEB TECHNOLOGIES -->
+            <div class="col-12 col-md-6">
 
-        <div class="subject-card">
-            <div class="card-title">
-                <h2>Web Technologies</h2>
-                <span>75%</span>
+                <article class="subject-card h-100">
+
+                    <div class="card-title">
+                        <h2>Web Technologies</h2>
+                        <span>75%</span>
+                    </div>
+
+                    <p class="description">
+                        HTML, CSS and responsive web design.
+                    </p>
+
+                    <p>4 Tasks</p>
+
+                    <div class="progress">
+                        <div class="progress-bar"
+                             style="width: 75%;"
+                             role="progressbar"
+                             aria-valuenow="75"
+                             aria-valuemin="0"
+                             aria-valuemax="100">
+                        </div>
+                    </div>
+
+                    <a href="#">View Subject</a>
+
+                </article>
+
             </div>
 
-            <p class="description">HTML, CSS and responsive web design.</p>
-            <p>4 Tasks</p>
 
-            <div class="progress">
-                <div class="progress-bar" style="width: 75%;"></div>
+            <!-- FINANCE -->
+            <div class="col-12 col-md-6">
+
+                <article class="subject-card h-100">
+
+                    <div class="card-title">
+                        <h2>Finance</h2>
+                        <span>50%</span>
+                    </div>
+
+                    <p class="description">
+                        Financial statements and analysis.
+                    </p>
+
+                    <p>3 Tasks</p>
+
+                    <div class="progress">
+                        <div class="progress-bar"
+                             style="width: 50%;"
+                             role="progressbar"
+                             aria-valuenow="50"
+                             aria-valuemin="0"
+                             aria-valuemax="100">
+                        </div>
+                    </div>
+
+                    <a href="#">View Subject</a>
+
+                </article>
+
             </div>
 
-            <a href="#">View Subject</a>
-        </div>
 
+            <!-- ANALYTICAL METHODS -->
+            <div class="col-12 col-md-6">
 
-        <div class="subject-card">
-            <div class="card-title">
-                <h2>Finance</h2>
-                <span>50%</span>
+                <article class="subject-card h-100">
+
+                    <div class="card-title">
+                        <h2>Analytical Methods</h2>
+                        <span>80%</span>
+                    </div>
+
+                    <p class="description">
+                        Probability and analytical methods.
+                    </p>
+
+                    <p>6 Tasks</p>
+
+                    <div class="progress">
+                        <div class="progress-bar"
+                             style="width: 80%;"
+                             role="progressbar"
+                             aria-valuenow="80"
+                             aria-valuemin="0"
+                             aria-valuemax="100">
+                        </div>
+                    </div>
+
+                    <a href="#">View Subject</a>
+
+                </article>
+
             </div>
 
-            <p class="description">Financial statements and analysis.</p>
-            <p>3 Tasks</p>
 
-            <div class="progress">
-                <div class="progress-bar" style="width: 50%;"></div>
-            </div>
+        </section>
 
-            <a href="#">View Subject</a>
-        </div>
+    </main>
 
 
-        <div class="subject-card">
-            <div class="card-title">
-                <h2>Analytical Methods</h2>
-                <span>80%</span>
-            </div>
-
-            <p class="description">Probability and analytical methods.</p>
-            <p>6 Tasks</p>
-
-            <div class="progress">
-                <div class="progress-bar" style="width: 80%;"></div>
-            </div>
-
-            <a href="#">View Subject</a>
-        </div>
-
-    </div>
-
-</main>
-
-
+    <!-- FOOTER -->
     <footer class="footer">
         <p>© 2026 STUDY PLANNER</p>
         
@@ -118,6 +241,7 @@
             <a href="#" class="footer-link">Contact us</a>
             <a href="#" class="footer-link">About us</a>
         </div>
+
     </footer>
 
 </body>

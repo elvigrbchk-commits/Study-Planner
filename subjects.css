@@ -1,3 +1,26 @@
+/* ===== SUBJECTS HEADER ===== */
+
+.site-header {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    margin: 0;
+
+    background-color: #ffc0cb;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ===== ACTIVE SUBJECTS BUTTON ===== */
+
+.menu a.active {
+    background-color: #ff93a3;
+    color: #ffffff;
+}
+
 /* ===== SUBJECTS PAGE ===== */
 
 .subjects-page {
@@ -35,34 +58,123 @@
 }
 
 
-/* ===== ADD SUBJECT BUTTON ===== */
+/* ===== ADD SUBJECT ===== */
 
-.add-button {
-    padding: 12px 22px;
+.add-subject {
+    position: relative;
+}
 
-    font-family: inherit;
-    font-size: 14px;
+.add-subject summary {
+    display: inline-block;
+    padding: 12px 25px;
 
-    color: #d85f70;
+    color: #ffffff;
+    background-color: #e97f91;
+
+    border-radius: 16px;
+
+    font-size: 16px;
+    cursor: pointer;
+    list-style: none;
+
+    transition: 0.2s;
+}
+
+.add-subject summary::-webkit-details-marker {
+    display: none;
+}
+
+.add-subject summary:hover {
+    background-color: #d96f82;
+}
+
+
+/* ===== ADD SUBJECT FORM ===== */
+
+.subject-form {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    z-index: 1000;
+
+    width: 280px;
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
     background-color: #fffafa;
 
     border: 1px solid #ffc0cb;
     border-radius: 16px;
-
-    cursor: pointer;
 }
 
-.add-button:hover {
-    background-color: #ffe6ea;
+.subject-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    color: #392d38;
+    font-size: 15px;
+}
+
+.subject-form input {
+    width: 100%;
+    padding: 10px;
+
+    box-sizing: border-box;
+
+    font-family: inherit;
+
+    color: #392d38;
+    background-color: #ffffff;
+
+    border: 1px solid #ffb6c1;
+    border-radius: 10px;
+}
+
+.subject-form input:focus {
+    outline: 2px solid #e58090;
+    outline-offset: 1px;
+}
+
+.subject-form button {
+    padding: 10px;
+
+    font-family: inherit;
+
+    color: #ffffff;
+    background-color: #ff8fa3;
+
+    border: none;
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.subject-form button:hover {
+    background-color: #e58090;
 }
 
 
 /* ===== SUBJECT GRID ===== */
 
 .subjects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    margin-left: -12px;
+    margin-right: -12px;
+}
+
+.subjects-grid > div {
+    display: flex;
+}
+
+.subject-card {
+    width: 100%;
 }
 
 
@@ -117,6 +229,8 @@
 /* ===== PROGRESS BAR ===== */
 
 .subject-card .progress {
+    display: block;
+
     width: 100%;
     height: 12px;
 
@@ -132,6 +246,7 @@
 }
 
 .subject-card .progress-bar {
+    display: block;
     height: 100%;
 
     background-color: #e58090;
@@ -162,19 +277,14 @@
     text-decoration: underline;
 }
 
-
-/* ===== TABLET ===== */
-
-@media (max-width: 992px) {
-    .subjects-grid {
-        gap: 16px;
-    }
-}
-
-
 /* ===== PHONE ===== */
 
 @media (max-width: 576px) {
+
+    .site-header {
+        flex-direction: column;
+    }
+
     .subjects-page {
         padding: 24px 16px;
     }
@@ -189,11 +299,13 @@
         font-size: 25px;
     }
 
-    .subjects-grid {
-        grid-template-columns: 1fr;
-    }
-
     .subject-card {
         padding: 20px;
+    }
+
+    .subject-form {
+        left: 0;
+        right: auto;
+        width: 260px;
     }
 }
