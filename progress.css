@@ -1,4 +1,4 @@
-/* ===== PROGRESS — SAME STYLE AS SUBJECTS ===== */
+
 
 html,
 body {
@@ -13,14 +13,15 @@ body {
     flex-direction: column;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #392d38;
-    background-color: #fff5f6;
+    background-color: #fdedee;
 }
 
 
-/* ===== HEADER ===== */
+
+
 
 .logoHat {
-    width: 200px;
+    width: 200px; 
     filter: hue-rotate(50deg) brightness(1.18);
 }
 
@@ -64,14 +65,18 @@ body {
     color: #a70061;
 }
 
-/* Progress = current page */
+
+
+
 .menu .progress-active {
     background-color: #ff93a3;
     color: white;
 }
 
 
-/* ===== MAIN ===== */
+
+
+
 
 .progress-page {
     flex: 1;
@@ -93,8 +98,6 @@ body {
 }
 
 
-/* ===== INTRO ===== */
-
 .progress-intro {
     margin-bottom: 28px;
 }
@@ -113,8 +116,6 @@ body {
     line-height: 1.5;
 }
 
-
-/* ===== SUMMARY ===== */
 
 .progress-summary {
     display: grid;
@@ -157,7 +158,10 @@ body {
 }
 
 
-/* ===== SUBJECT PROGRESS ===== */
+
+
+
+
 
 .subject-progress > h2 {
     margin: 0 0 20px;
@@ -201,7 +205,10 @@ body {
 }
 
 
-/* ===== PROGRESS BARS ===== */
+
+
+
+
 
 .progress-track {
     display: flex;
@@ -252,7 +259,9 @@ body {
 }
 
 
-/* ===== NOTE ===== */
+
+
+
 
 .progress-note {
     margin: 20px 0 0;
@@ -263,7 +272,7 @@ body {
 }
 
 
-/* ===== FOOTER ===== */
+
 
 .footer {
     position: static;
@@ -309,7 +318,7 @@ body {
 }
 
 
-/* ===== TABLET ===== */
+
 
 @media (max-width: 992px) {
 
@@ -334,7 +343,7 @@ body {
 }
 
 
-/* ===== PHONE ===== */
+
 
 @media (max-width: 576px) {
 
