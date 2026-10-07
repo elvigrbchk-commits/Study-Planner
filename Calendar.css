@@ -1,5 +1,3 @@
-/* ===== CALENDAR — SAME STYLE AS SUBJECTS ===== */
-
 html,
 body {
     margin: 0;
@@ -16,9 +14,6 @@ body {
     color: #392d38;
     background-color: #fff5f6;
 }
-
-
-/* ===== HEADER ===== */
 
 .logoHat {
     width: 200px;
@@ -65,14 +60,10 @@ body {
     color: #a70061;
 }
 
-/* Calendar = current page */
 .menu .calendar {
     background-color: #ff93a3;
     color: white;
 }
-
-
-/* ===== CALENDAR MAIN ===== */
 
 .calendar-page {
     flex: 1;
@@ -86,8 +77,6 @@ body {
     box-sizing: border-box;
 }
 
-
-/* ===== TITLE ===== */
 
 .calendar-header {
     display: flex;
@@ -104,8 +93,6 @@ body {
 }
 
 
-/* ===== MONTH BUTTON ===== */
-
 .month {
     background-color: #fffafa;
     color: #d85f70;
@@ -118,9 +105,6 @@ body {
     font-family: inherit;
     font-size: 16px;
 }
-
-
-/* ===== UPCOMING ===== */
 
 .upcoming {
     padding: 10px 0 15px;
@@ -140,9 +124,6 @@ body {
     font-size: 14px;
 }
 
-
-/* ===== CALENDAR BOX ===== */
-
 .calendar-box {
     margin-top: 15px;
     padding: 20px;
@@ -152,9 +133,6 @@ body {
     border: 1px solid #ffc0cb;
     border-radius: 16px;
 }
-
-
-/* ===== CALENDAR TABLE ===== */
 
 .calendar-table {
     width: 100%;
@@ -205,8 +183,6 @@ body {
 }
 
 
-/* ===== FOOTER ===== */
-
 .footer {
     position: static;
 
@@ -250,9 +226,6 @@ body {
     background-color: #fff5f6;
 }
 
-
-/* ===== TABLET ===== */
-
 @media (max-width: 992px) {
 
     .menu {
@@ -269,9 +242,6 @@ body {
         padding-right: 20px;
     }
 }
-
-
-/* ===== PHONE ===== */
 
 @media (max-width: 576px) {
 
