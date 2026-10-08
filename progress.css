@@ -16,10 +16,6 @@ body {
     background-color: #fdedee;
 }
 
-
-
-
-
 .logoHat {
     width: 200px; 
     filter: hue-rotate(50deg) brightness(1.18);
@@ -64,20 +60,10 @@ body {
 .menu a:hover {
     color: #a70061;
 }
-
-
-
-
 .menu .progress-active {
     background-color: #ff93a3;
     color: white;
 }
-
-
-
-
-
-
 .progress-page {
     flex: 1;
 
@@ -92,31 +78,24 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #392d38;
 }
-
 .progress-page * {
     box-sizing: border-box;
 }
-
-
 .progress-intro {
     margin-bottom: 28px;
 }
-
 .progress-intro h1 {
     margin: 0 0 10px;
 
     font-size: 30px;
     color: #392d38;
 }
-
 .progress-intro p {
     margin: 0;
 
     color: #8c5962;
     line-height: 1.5;
 }
-
-
 .progress-summary {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -124,7 +103,6 @@ body {
     gap: 24px;
     margin-bottom: 32px;
 }
-
 .progress-card {
     display: flex;
     justify-content: space-between;
@@ -145,7 +123,6 @@ body {
     font-size: 18px;
     color: #392d38;
 }
-
 .progress-number {
     margin: 0;
 
@@ -156,13 +133,6 @@ body {
 
     white-space: nowrap;
 }
-
-
-
-
-
-
-
 .subject-progress > h2 {
     margin: 0 0 20px;
 
@@ -203,13 +173,6 @@ body {
 
     font-size: 14px;
 }
-
-
-
-
-
-
-
 .progress-track {
     display: flex;
     align-items: center;
@@ -257,12 +220,6 @@ body {
     background-color: #e58090;
     border-radius: 20px;
 }
-
-
-
-
-
-
 .progress-note {
     margin: 20px 0 0;
 
@@ -270,10 +227,6 @@ body {
 
     font-size: 13px;
 }
-
-
-
-
 .footer {
     position: static;
 
@@ -317,9 +270,6 @@ body {
     border-radius: 10px;
 }
 
-
-
-
 @media (max-width: 992px) {
 
     .menu {
@@ -341,10 +291,6 @@ body {
         align-items: flex-start;
     }
 }
-
-
-
-
 @media (max-width: 576px) {
 
     .container {
