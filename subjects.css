@@ -1,4 +1,23 @@
-/* ===== SUBJECTS PAGE ===== */
+.site-header {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    margin: 0;
+
+    background-color: #ffc0cb;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.menu a.active {
+    background-color: #ff93a3;
+    color: #ffffff;
+}
+
 
 .subjects-page {
     flex: 1;
@@ -13,8 +32,6 @@
     box-sizing: border-box;
 }
 
-
-/* ===== INTRO ===== */
 
 .subjects-header {
     display: flex;
@@ -35,38 +52,119 @@
 }
 
 
-/* ===== ADD SUBJECT BUTTON ===== */
+.add-subject {
+    position: relative;
+}
 
-.add-button {
-    padding: 12px 22px;
+.add-subject summary {
+    display: inline-block;
+    padding: 12px 25px;
 
-    font-family: inherit;
-    font-size: 14px;
+    color: #ffffff;
+    background-color: #e97f91;
 
-    color: #d85f70;
+    border-radius: 16px;
+
+    font-size: 16px;
+    cursor: pointer;
+    list-style: none;
+
+    transition: 0.2s;
+}
+
+.add-subject summary::-webkit-details-marker {
+    display: none;
+}
+
+.add-subject summary:hover {
+    background-color: #d96f82;
+}
+
+
+.subject-form {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    z-index: 1000;
+
+    width: 280px;
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
     background-color: #fffafa;
 
     border: 1px solid #ffc0cb;
     border-radius: 16px;
+}
+
+.subject-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    color: #392d38;
+    font-size: 15px;
+}
+
+.subject-form input {
+    width: 100%;
+    padding: 10px;
+
+    box-sizing: border-box;
+
+    font-family: inherit;
+
+    color: #392d38;
+    background-color: #ffffff;
+
+    border: 1px solid #ffb6c1;
+    border-radius: 10px;
+}
+
+.subject-form input:focus {
+    outline: 2px solid #e58090;
+    outline-offset: 1px;
+}
+
+.subject-form button {
+    padding: 10px;
+
+    font-family: inherit;
+
+    color: #ffffff;
+    background-color: #ff8fa3;
+
+    border: none;
+    border-radius: 16px;
 
     cursor: pointer;
+
+    transition: 0.2s;
 }
 
-.add-button:hover {
-    background-color: #ffe6ea;
+.subject-form button:hover {
+    background-color: #e58090;
 }
 
-
-/* ===== SUBJECT GRID ===== */
 
 .subjects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    margin-left: -12px;
+    margin-right: -12px;
 }
 
+.subjects-grid > div {
+    display: flex;
+}
 
-/* ===== SUBJECT CARD ===== */
+.subject-card {
+    width: 100%;
+}
+
 
 .subject-card {
     padding: 22px;
@@ -97,8 +195,6 @@
 }
 
 
-/* ===== CARD TEXT ===== */
-
 .description {
     margin: 12px 0 8px;
 
@@ -114,9 +210,9 @@
 }
 
 
-/* ===== PROGRESS BAR ===== */
-
 .subject-card .progress {
+    display: block;
+
     width: 100%;
     height: 12px;
 
@@ -132,6 +228,7 @@
 }
 
 .subject-card .progress-bar {
+    display: block;
     height: 100%;
 
     background-color: #e58090;
@@ -139,8 +236,6 @@
     border-radius: 20px;
 }
 
-
-/* ===== VIEW SUBJECT LINK ===== */
 
 .subject-card a {
     display: inline;
@@ -163,18 +258,12 @@
 }
 
 
-/* ===== TABLET ===== */
-
-@media (max-width: 992px) {
-    .subjects-grid {
-        gap: 16px;
-    }
-}
-
-
-/* ===== PHONE ===== */
-
 @media (max-width: 576px) {
+
+    .site-header {
+        flex-direction: column;
+    }
+
     .subjects-page {
         padding: 24px 16px;
     }
@@ -189,11 +278,22 @@
         font-size: 25px;
     }
 
-    .subjects-grid {
-        grid-template-columns: 1fr;
-    }
-
     .subject-card {
         padding: 20px;
     }
+
+    .subject-form {
+        left: 0;
+        right: auto;
+        width: 260px;
+    }
+}
+
+.subject-card button {
+    background: #ea7895;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
 }
