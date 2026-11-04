@@ -7,7 +7,7 @@ const subjects = JSON.parse(localStorage.getItem("subjects")) || [
 ];
 
 const grid = document.querySelector(".subjects-grid");
-const form = document.querySelector("#subject-form");
+const form = document.querySelector(".subject-form");
 const search = document.querySelector("#subject-search");
 
 function saveSubjects() {
@@ -44,7 +44,7 @@ function showSubjects(keyword = "") {
         deleteButton.addEventListener("click", () => {
             subjects.splice(index, 1);
             saveSubjects();
-            showSubjects(search.value);
+            showSubjects(search ? search.value : "");
         });
 
         card.append(title, description, tasks, deleteButton);
@@ -85,14 +85,16 @@ form.addEventListener("submit", function(event) {
 
     subjects.push({ name, description, tasks });
     saveSubjects();
-    showSubjects(search.value);
+    showSubjects(search ? search.value : "");
 
     error.textContent = "Subject added successfully!";
     form.reset();
 });
 
-search.addEventListener("input", function() {
-    showSubjects(search.value);
-});
+if (search) {
+    search.addEventListener("input", function() {
+        showSubjects(search.value);
+    });
+}
 
 showSubjects();
