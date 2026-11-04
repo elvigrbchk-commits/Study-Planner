@@ -7,7 +7,7 @@ const subjects = JSON.parse(localStorage.getItem("subjects")) || [
 ];
 
 const grid = document.querySelector(".subjects-grid");
-const form = document.querySelector(".subject-form");
+const form = document.querySelector("#subject-form");
 const search = document.querySelector("#subject-search");
 
 function saveSubjects() {
