@@ -278,3 +278,12 @@
         width: 260px;
     }
 }
+
+.subject-card button {
+    background: #ea7895;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
