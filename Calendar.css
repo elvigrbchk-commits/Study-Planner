@@ -298,3 +298,64 @@ body {
         justify-content: center;
     }
 }
+
+
+.month {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.month button {
+    border: none;
+    background: #ff93a3;
+    color: white;
+    border-radius: 10px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.month button:hover {
+    background: #e58090;
+}
+
+.calendar-day {
+    border: none;
+    background: transparent;
+    color: #392d38;
+    font: inherit;
+    padding: 6px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.calendar-day:hover {
+    background: #ffe0e6;
+}
+
+.calendar-day.today {
+    border: 2px solid #ff93a3;
+}
+
+.calendar-day.selected {
+    background: #ff93a3;
+    color: white;
+}
+
+.calendar-task {
+    font-size: 12px;
+    color: #d85f70;
+    overflow-wrap: anywhere;
+}
+
+.calendar-details {
+    margin-top: 25px;
+    padding: 15px;
+    background: #fff5f6;
+    border-radius: 12px;
+}
+
+.calendar-details h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
