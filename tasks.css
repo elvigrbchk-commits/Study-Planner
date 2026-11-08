@@ -454,9 +454,6 @@ body {
     }
 }
 
-
-/* EN DTERM: Interactive Tasks */
-
 .task-controls {
     display: flex;
     align-items: center;
