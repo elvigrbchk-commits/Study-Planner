@@ -1,8 +1,29 @@
-let subjects = [
-    "Operating Systems",
-    "WEB Technologies 1",
-    "Software Design Patterns"
-];
+
+let subjects = [];
+
+function loadSubjects() {
+    const saved = localStorage.getItem("subjects");
+
+    const defaultSubjects = [
+        { name: "Operating Systems" },
+        { name: "Web Technologies" },
+        { name: "Finance" },
+        { name: "Analytical Methods" }
+    ];
+
+    const subjectList = saved === null
+        ? defaultSubjects
+        : JSON.parse(saved);
+
+    subjects = subjectList.map(subject => subject.name);
+
+    // Include subjects used by existing tasks
+    for (const task of tasks) {
+        if (!subjects.includes(task.subject)) {
+            subjects.push(task.subject);
+        }
+    }
+}
 
 
 let tasks = [];
@@ -188,6 +209,7 @@ function showCompletedTasks() {
 
 function updateProgress() {
     loadTasks();
+    loadSubjects();
     updateSummary();
     showSubjectProgress();
     showMotivation();
@@ -224,5 +246,5 @@ $("#show-completed").on("click", function() {
     }
 });
 
-
+window.addEventListener("pageshow", updateProgress);
 updateProgress();

@@ -402,3 +402,62 @@ body {
     padding: 12px 10px;
     box-sizing: border-box;
 }
+
+
+.dashboard .task-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ffb6c1;
+    border-radius: 10px;
+    background: #fffafa;
+    color: #302633;
+    font: inherit;
+    cursor: pointer;
+}
+
+.dashboard .task-form select:focus {
+    outline: 2px solid #ff93a3;
+}
+
+.dashboard .task-form {
+    top: 55px;
+    right: 0;
+    width: 280px;
+    padding: 20px;
+    gap: 15px;
+    background: #fffafa;
+    border: 1px solid #ffc0cb;
+    border-radius: 16px;
+}
+
+.dashboard .task-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 15px;
+    color: #392d38;
+}
+
+.dashboard .task-form input,
+.dashboard .task-form select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background: white;
+    border: 1px solid #ffb6c1;
+    border-radius: 10px;
+    font: inherit;
+    color: #392d38;
+}
+
+.dashboard .task-form button {
+    width: 100%;
+    padding: 10px;
+    background: #ff8fa3;
+    border-radius: 16px;
+}
+
+.dashboard .task-form input:focus,
+.dashboard .task-form select:focus {
+    outline: 2px solid #e58090;
+}

@@ -1,8 +1,33 @@
-let subjects = [
-    "Operating Systems",
-    "WEB Technologies 1",
-    "Software Design Patterns"
-];
+
+let subjects = [];
+
+function loadSubjects() {
+    const saved = localStorage.getItem("subjects");
+
+    const defaultSubjects = [
+        { name: "Operating Systems" },
+        { name: "Web Technologies" },
+        { name: "Finance" },
+        { name: "Analytical Methods" }
+    ];
+
+    const subjectList = saved === null
+        ? defaultSubjects
+        : JSON.parse(saved);
+
+    subjects = subjectList.map(subject => subject.name);
+
+    const select = document.getElementById("new-task-subject");
+    select.innerHTML = '<option value="">Choose subject</option>';
+
+    for (const subject of subjects) {
+        const option = document.createElement("option");
+        option.value = subject;
+        option.textContent = subject;
+        select.appendChild(option);
+    }
+}
+
 
 let tasks = [
     {
@@ -129,6 +154,7 @@ function showTasks() {
     }
 
     updateSummary();
+    showSubjectCards();
 }
 
 
@@ -306,5 +332,58 @@ $(".goals-card input").on("change", function() {
     label.fadeOut(150).fadeIn(150);
 });
 
-showTasks();
 
+function showSubjectCards() {
+    const container = document.querySelector(".subject-cards");
+    const saved = localStorage.getItem("subjects");
+
+    const defaultSubjects = [
+        { name: "Operating Systems", description: "Linux commands and shell scripts." },
+        { name: "Web Technologies", description: "HTML, CSS and responsive web design." },
+        { name: "Finance", description: "Financial statements and analysis." },
+        { name: "Analytical Methods", description: "Probability and analytical methods." }
+    ];
+
+    const subjectList = saved === null
+        ? defaultSubjects
+        : JSON.parse(saved);
+
+    container.innerHTML = "";
+
+    for (const subject of subjectList) {
+        const card = document.createElement("article");
+        card.className = "subject-card";
+
+        const title = document.createElement("h3");
+        title.textContent = subject.name;
+
+        const description = document.createElement("p");
+        description.textContent = subject.description || "";
+
+        const count = document.createElement("p");
+        const total = tasks.filter(task =>
+            task.subject === subject.name
+        ).length;
+
+        count.textContent = total + " Tasks";
+
+        card.append(title, description, count);
+        container.appendChild(card);
+    }
+}
+
+window.addEventListener("pageshow", function () {
+    const saved = localStorage.getItem("studyPlannerTasks");
+
+    if (saved !== null) {
+        tasks = JSON.parse(saved);
+    }
+
+    loadSubjects();
+    showSubjectCards();
+    showTasks();
+});
+
+loadSubjects();
+showSubjectCards();
+showTasks();

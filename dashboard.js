@@ -1,4 +1,31 @@
 
+function loadDashboardSubjects() {
+    const saved = localStorage.getItem("subjects");
+
+    const defaultSubjects = [
+        { name: "Operating Systems" },
+        { name: "Web Technologies" },
+        { name: "Finance" },
+        { name: "Analytical Methods" }
+    ];
+
+    const subjects = saved === null
+        ? defaultSubjects
+        : JSON.parse(saved);
+
+    const select = document.getElementById("dashboard-subject");
+
+    select.innerHTML = '<option value="">Choose subject</option>';
+
+    for (const subject of subjects) {
+        const option = document.createElement("option");
+        option.value = subject.name;
+        option.textContent = subject.name;
+        select.appendChild(option);
+    }
+}
+
+
 const defaultTasks = [
     { name: "Complete Linux assignment", subject: "Operating Systems", date: "2026-11-10", completed: false },
     { name: "Create the Tasks page", subject: "WEB Technologies 1", date: "2026-11-12", completed: true },
@@ -97,9 +124,10 @@ document.querySelector(".task-form").addEventListener("submit", function (event)
     event.preventDefault();
 
     const inputs = this.querySelectorAll("input");
-    const subject = inputs[0].value.trim();
-    const name = inputs[1].value.trim();
-    const date = inputs[2].value;
+    
+    const subject = document.getElementById("dashboard-subject").value;
+    const name = inputs[0].value.trim();
+    const date = inputs[1].value;
 
     let error = this.querySelector(".dashboard-error");
 
@@ -142,4 +170,7 @@ document.querySelector(".task-form").addEventListener("submit", function (event)
     });
 });
 
-window.addEventListener("pageshow", showDashboard);
+window.addEventListener("pageshow", function () {
+    loadDashboardSubjects();
+    showDashboard();
+});

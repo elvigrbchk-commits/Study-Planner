@@ -607,3 +607,67 @@ body {
 .tasks-page textarea {
     font-family: inherit;
 }
+
+.upcoming-section {
+    position: relative;
+}
+
+#add-task-form {
+    position: absolute;
+    top: 75px;
+    left: 22px;
+    right: auto;
+    z-index: 1000;
+
+    width: 280px;
+    max-width: calc(100% - 44px);
+    margin: 0;
+    padding: 20px;
+
+    background: #fffafa;
+    border: 1px solid #ffc0cb;
+    border-radius: 16px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#add-task-form[hidden] {
+    display: none !important;
+}
+
+#add-task-form h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+#add-task-form label {
+    margin: 0;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+#add-task-form input,
+#add-task-form select {
+    width: 100%;
+    padding: 10px;
+    background: white;
+    border: 1px solid #ffb6c1;
+    border-radius: 10px;
+}
+
+#add-task-form button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background: #ff8fa3;
+    border-radius: 16px;
+}
+
+@media (max-width: 576px) {
+    #add-task-form {
+        top: 120px;
+    }
+}
