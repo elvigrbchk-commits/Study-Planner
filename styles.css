@@ -392,3 +392,13 @@ body {
         justify-content: center;
     }
 }
+
+.site-header .menu {
+    padding-right: 0;
+}
+
+.site-header .menu a {
+    width: 182px;
+    padding: 12px 10px;
+    box-sizing: border-box;
+}
