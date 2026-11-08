@@ -1,0 +1,158 @@
+
+.about-page {
+    max-width: 1240px;
+    margin: 35px auto;
+    padding: 0 20px 50px;
+}
+
+.about-heading {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.about-heading h1 {
+    color: #252238;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.about-heading p {
+    color: #a44d61;
+    font-size: 16px;
+}
+
+.about-card {
+    background: #fffafa;
+    border: 1px solid #ffb8c8;
+    border-radius: 18px;
+    padding: 35px;
+    margin-bottom: 30px;
+}
+
+.about-card h2 {
+    color: #252238;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.about-card p {
+    color: #514451;
+    line-height: 1.7;
+}
+
+.section-title {
+    color: #252238;
+    font-size: 25px;
+    margin: 35px 0 20px;
+}
+
+.team {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.member {
+    background: #fffafa;
+    border: 1px solid #ffb8c8;
+    border-radius: 18px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.member:hover {
+    transform: translateY(-5px);
+}
+
+.member-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #f8b8c9;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.member h3 {
+    color: #252238;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.member p {
+    color: #a44d61;
+    font-size: 15px;
+}
+
+.goal-card {
+    margin-top: 10px;
+}
+
+#more-btn {
+    background: #eb7894;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 25px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#more-btn:hover {
+    background: #d85e7d;
+}
+
+#more-text {
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .team {
+        grid-template-columns: 1fr;
+    }
+
+    .about-page {
+        padding: 0 15px 30px;
+    }
+
+    .about-card {
+        padding: 25px;
+    }
+}
+
+.footer {
+    background: #ffc0cb;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-link {
+    background: #fff8fa;
+    color: #e64f70;
+    text-decoration: none;
+    padding: 12px 35px;
+    border-radius: 12px;
+}
+
+.footer-link:hover {
+    background: #ff8fa5;
+    color: white;
+}

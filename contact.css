@@ -1,0 +1,86 @@
+
+.contact-page {
+    max-width: 1240px;
+    min-height: 65vh;
+    margin: 35px auto;
+    padding: 0 20px 50px;
+}
+
+.contact-heading {
+    margin-bottom: 35px;
+}
+
+.contact-heading h1 {
+    color: #252238;
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.contact-heading p {
+    color: #a44d61;
+    font-size: 16px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.contact-card {
+    background: #fffafa;
+    border: 1px solid #ffb8c8;
+    border-radius: 18px;
+    padding: 45px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #252238;
+    transition: 0.2s;
+}
+
+.contact-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(230, 100, 140, 0.15);
+}
+
+.contact-card i {
+    font-size: 55px;
+    margin-bottom: 25px;
+}
+
+.whatsapp {
+    color: #25d366;
+}
+
+.telegram {
+    color: #229ed9;
+}
+
+.instagram {
+    color: #e4405f;
+}
+
+.contact-card h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.contact-card p {
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.contact-card span {
+    display: inline-block;
+    background: #eb7894;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
