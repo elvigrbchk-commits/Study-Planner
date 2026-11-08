@@ -359,3 +359,213 @@ body {
     font-size: 20px;
     margin-bottom: 10px;
 }
+
+
+/* Calendar mobile version */
+
+@media (max-width: 576px) {
+    .calendar-page {
+        width: 100%;
+        padding: 24px 16px;
+        box-sizing: border-box;
+    }
+
+    .calendar-header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .calendar-header h1 {
+        font-size: 25px;
+    }
+
+    .calendar-box {
+        width: 100%;
+        padding: 12px;
+        box-sizing: border-box;
+        overflow-x: auto;
+    }
+
+    .calendar-table {
+        width: 100%;
+        min-width: 0;
+        table-layout: fixed;
+    }
+
+    .calendar-table th,
+    .calendar-table td {
+        padding: 5px 2px;
+        font-size: 11px;
+        overflow-wrap: anywhere;
+        vertical-align: top;
+    }
+
+    .calendar-day {
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    .calendar-task {
+        font-size: 9px;
+        line-height: 1.2;
+        overflow-wrap: anywhere;
+    }
+
+    .calendar-details {
+        padding: 12px;
+    }
+
+    .month {
+        gap: 10px;
+    }
+}
+
+.weekly-calendar {
+    display: none;
+}
+
+@media (max-width: 576px) {
+
+    .calendar-box {
+        display: none;
+    }
+
+    .calendar-header .month {
+        display: none;
+    }
+
+    .weekly-calendar {
+        display: block;
+        margin-top: 20px;
+    }
+
+    .weekly-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 18px;
+        gap: 10px;
+    }
+
+    .weekly-header h2 {
+        margin: 0;
+        font-size: 20px;
+        color: #392d38;
+    }
+
+    .week-buttons {
+        display: flex;
+        gap: 8px;
+    }
+
+    .week-buttons button {
+        background: #ff93a3;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 13px;
+        cursor: pointer;
+    }
+
+    .week-days {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 5px;
+        margin-bottom: 25px;
+    }
+
+    .week-day {
+        min-width: 0;
+        min-height: 72px;
+        border: 1px solid #ffc0cb;
+        background: #fffafa;
+        border-radius: 12px;
+        color: #392d38;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+
+        cursor: pointer;
+        font-family: inherit;
+    }
+
+    .week-day span {
+        font-size: 11px;
+    }
+
+    .week-day strong {
+        font-size: 17px;
+    }
+
+    .week-day.selected {
+        background: #ff93a3;
+        color: white;
+    }
+
+    .task-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #e56f8b;
+    }
+
+    .week-day.selected .task-dot {
+        background: white;
+    }
+
+    .weekly-calendar h3 {
+        font-size: 20px;
+        margin: 0 0 15px;
+    }
+
+    .week-task-card {
+        background: #fffafa;
+        border: 1px solid #ffc0cb;
+        border-radius: 15px;
+        padding: 16px;
+        margin-bottom: 12px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .week-task-card small {
+        color: #d85f70;
+        font-size: 12px;
+    }
+
+    .week-task-card strong {
+        font-size: 16px;
+        color: #392d38;
+    }
+
+    .week-task-card p {
+        margin: 0;
+        font-size: 13px;
+        color: #8c5962;
+    }
+
+    .week-task-card span {
+        font-size: 12px;
+        color: #d85f70;
+    }
+
+    .week-task-card.completed strong {
+        text-decoration: line-through;
+    }
+
+    .empty-week {
+        background: #fffafa;
+        border: 1px solid #ffc0cb;
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        color: #8c5962;
+    }
+}

@@ -147,3 +147,151 @@ document.getElementById("next-month").addEventListener("click", function () {
 window.addEventListener("pageshow", showCalendar);
 
 showCalendar();
+
+let weekDate = new Date();
+let selectedWeekDay = null;
+
+function getMonday(date) {
+    const monday = new Date(date);
+    const day = (monday.getDay() + 6) % 7;
+
+    monday.setDate(monday.getDate() - day);
+    return monday;
+}
+
+function showWeek() {
+    const monday = getMonday(weekDate);
+    const sunday = new Date(monday);
+    sunday.setDate(monday.getDate() + 6);
+
+    const options = { month: "short", day: "numeric" };
+
+    document.getElementById("week-title").textContent =
+        monday.toLocaleDateString("en-US", options) +
+        " - " +
+        sunday.toLocaleDateString("en-US", options);
+
+    const container = document.getElementById("week-days");
+    container.innerHTML = "";
+
+    const names = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const tasks = loadTasks();
+
+    for (let i = 0; i < 7; i++) {
+        const date = new Date(monday);
+        date.setDate(monday.getDate() + i);
+
+        const dateString = formatDate(
+            date.getFullYear(),
+            date.getMonth(),
+            date.getDate()
+        );
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "week-day";
+
+        const name = document.createElement("span");
+        name.textContent = names[i];
+
+        const number = document.createElement("strong");
+        number.textContent = date.getDate();
+
+        button.append(name, number);
+
+        if (dateString === selectedWeekDay) {
+            button.classList.add("selected");
+        }
+
+        if (tasks.some(task => task.date === dateString)) {
+            const dot = document.createElement("span");
+            dot.className = "task-dot";
+            button.appendChild(dot);
+        }
+
+        button.addEventListener("click", function () {
+            selectedWeekDay = dateString;
+            showWeek();
+        });
+
+        container.appendChild(button);
+    }
+
+    showWeekTasks(monday, sunday);
+}
+
+function showWeekTasks(monday, sunday) {
+    const container = document.getElementById("week-tasks");
+    container.innerHTML = "";
+
+    const tasks = loadTasks()
+        .filter(task => {
+            const date = task.date;
+
+            const start = formatDate(
+                monday.getFullYear(),
+                monday.getMonth(),
+                monday.getDate()
+            );
+
+            const end = formatDate(
+                sunday.getFullYear(),
+                sunday.getMonth(),
+                sunday.getDate()
+            );
+
+            return date >= start && date <= end &&
+                (!selectedWeekDay || date === selectedWeekDay);
+        })
+        .sort((a, b) => a.date.localeCompare(b.date));
+
+    if (tasks.length === 0) {
+        const message = document.createElement("p");
+        message.className = "empty-week";
+        message.textContent = "No tasks for this period 💗";
+        container.appendChild(message);
+        return;
+    }
+
+    for (const task of tasks) {
+        const card = document.createElement("div");
+        card.className = "week-task-card";
+
+        const date = document.createElement("small");
+        date.textContent = task.date;
+
+        const title = document.createElement("strong");
+        title.textContent = task.name;
+
+        const subject = document.createElement("p");
+        subject.textContent = task.subject;
+
+        const status = document.createElement("span");
+        status.textContent = task.completed
+            ? "✓ Completed"
+            : "○ Not completed";
+
+        if (task.completed) {
+            card.classList.add("completed");
+        }
+
+        card.append(date, title, subject, status);
+        container.appendChild(card);
+    }
+}
+
+document.getElementById("prev-week").addEventListener("click", function () {
+    weekDate.setDate(weekDate.getDate() - 7);
+    selectedWeekDay = null;
+    showWeek();
+});
+
+document.getElementById("next-week").addEventListener("click", function () {
+    weekDate.setDate(weekDate.getDate() + 7);
+    selectedWeekDay = null;
+    showWeek();
+});
+
+window.addEventListener("pageshow", showWeek);
+
+showWeek();

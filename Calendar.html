@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Calendar</title>
         <link rel="stylesheet" href="Calendar.css">
         <link rel="stylesheet" href="site-layout.css">
@@ -30,6 +31,22 @@
         </div>
 
     </div>
+
+    <section class="weekly-calendar">
+        <div class="weekly-header">
+            <h2 id="week-title">This Week</h2>
+            
+            <div class="week-buttons">
+                <button id="prev-week" type="button">❮</button>
+                <button id="next-week" type="button">❯</button>
+            </div>
+        </div>
+
+    <div class="week-days" id="week-days"></div>
+
+    <h3>This Week's Tasks</h3>
+    <div id="week-tasks"></div>
+</section>
 
     <section class="calendar-box">
 

@@ -461,3 +461,69 @@ body {
 .dashboard .task-form select:focus {
     outline: 2px solid #e58090;
 }
+
+
+/* Dashboard mobile version */
+
+@media (max-width: 576px) {
+    .dashboard {
+        width: 100%;
+        padding: 24px 16px;
+    }
+
+    .dashboard-header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 25px;
+    }
+
+    .add-task {
+        width: 100%;
+    }
+
+    .add-task summary {
+        display: inline-block;
+        padding: 12px 25px;
+    }
+
+    .dashboard .task-form {
+        position: static;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 12px;
+        padding: 20px;
+    }
+
+    .dashboard-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin-top: 25px;
+    }
+
+    .dashboard-cards .card {
+        width: 100%;
+        min-height: 160px;
+        box-sizing: border-box;
+    }
+
+    .dashboard .progress {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .dashboard .progress p {
+        white-space: normal;
+    }
+
+    .dashboard .progress-bar {
+        flex: none;
+        width: 100%;
+    }
+}
