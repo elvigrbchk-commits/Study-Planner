@@ -668,3 +668,7 @@ body {
         top: 120px;
     }
 }
+
+.task-header h1 {
+    font-weight: 700;
+}

@@ -423,3 +423,7 @@ body {
         width: 100%;
     }
 }
+
+.progress-header h1 {
+    font-weight: 700;
+}
