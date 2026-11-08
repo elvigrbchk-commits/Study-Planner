@@ -300,3 +300,6 @@
     font-size: 14px;
     margin-top: 10px;
 }
+.subjects-header h1 {
+    font-weight: 700;
+}

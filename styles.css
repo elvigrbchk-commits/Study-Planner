@@ -527,3 +527,7 @@ body {
         width: 100%;
     }
 }
+
+.dashboard-header h1 {
+    font-weight: 700;
+}
