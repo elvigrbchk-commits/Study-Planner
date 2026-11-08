@@ -1,26 +1,50 @@
 
-const subjects = JSON.parse(localStorage.getItem("subjects")) || [
+const defaultSubjects = [
     { name: "Operating Systems", description: "Linux commands and shell scripts.", tasks: 5 },
     { name: "Web Technologies", description: "HTML, CSS and responsive web design.", tasks: 4 },
     { name: "Finance", description: "Financial statements and analysis.", tasks: 3 },
     { name: "Analytical Methods", description: "Probability and analytical methods.", tasks: 6 }
 ];
 
+let subjects = defaultSubjects;
+
+const saved = localStorage.getItem("subjects");
+
+if (saved !== null) {
+    subjects = JSON.parse(saved);
+}
+
 const grid = document.querySelector(".subjects-grid");
 const form = document.querySelector(".subject-form");
-const search = document.querySelector("#subject-search");
 
 function saveSubjects() {
     localStorage.setItem("subjects", JSON.stringify(subjects));
 }
 
-function showSubjects(keyword = "") {
+function countTasks(subjectName) {
+    const savedTasks = localStorage.getItem("studyPlannerTasks");
+    let tasks = [];
+
+    if (savedTasks !== null) {
+        tasks = JSON.parse(savedTasks);
+    }
+
+    let count = 0;
+
+    for (const task of tasks) {
+        if (task.subject === subjectName) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+function showSubjects() {
     grid.innerHTML = "";
 
-    subjects.forEach((subject, index) => {
-        if (!subject.name.toLowerCase().includes(keyword.toLowerCase())) {
-            return;
-        }
+    for (let i = 0; i < subjects.length; i++) {
+        const subject = subjects[i];
 
         const column = document.createElement("div");
         column.className = "col-12 col-md-6";
@@ -34,67 +58,91 @@ function showSubjects(keyword = "") {
         const description = document.createElement("p");
         description.textContent = subject.description;
 
-        const tasks = document.createElement("p");
-        tasks.textContent = subject.tasks + " Tasks";
+        const number = document.createElement("p");
+        number.textContent = countTasks(subject.name) + " Tasks";
 
         const deleteButton = document.createElement("button");
         deleteButton.type = "button";
         deleteButton.textContent = "Delete";
 
-        deleteButton.addEventListener("click", () => {
-            subjects.splice(index, 1);
+        deleteButton.addEventListener("click", function () {
+            subjects.splice(i, 1);
             saveSubjects();
-            showSubjects(search ? search.value : "");
+            showSubjects();
         });
 
-        card.append(title, description, tasks, deleteButton);
+        card.append(title, description, number, deleteButton);
         column.appendChild(card);
         grid.appendChild(column);
-    });
+    }
 }
 
-form.addEventListener("submit", function(event) {
-    event.preventDefault();
+function validateSubject() {
+    const name = document.getElementById("subject-name").value.trim();
+    const description = document.getElementById("subject-description").value.trim();
+    const tasksInput = document.getElementById("subject-tasks").value;
 
-    const name = form.querySelector('input[type="text"]').value.trim();
-    const description = form.querySelectorAll('input[type="text"]')[1].value.trim();
-    const tasks = Number(form.querySelector('input[type="number"]').value);
+    const nameError = document.getElementById("name-error");
+    const descriptionError = document.getElementById("description-error");
+    const tasksError = document.getElementById("tasks-error");
 
-    let error = form.querySelector(".form-error");
+    nameError.textContent = "";
+    descriptionError.textContent = "";
+    tasksError.textContent = "";
 
-    if (!error) {
-        error = document.createElement("p");
-        error.className = "form-error";
-        form.appendChild(error);
-    }
+    let valid = true;
 
     if (name.length < 3) {
-        error.textContent = "Subject name must contain at least 3 characters.";
-        return;
+        nameError.textContent = "Enter at least 3 characters.";
+        valid = false;
     }
 
     if (description.length < 5) {
-        error.textContent = "Description must contain at least 5 characters.";
+        descriptionError.textContent = "Enter at least 5 characters.";
+        valid = false;
+    }
+
+    if (tasksInput === "" || Number(tasksInput) < 0 ||
+        !Number.isInteger(Number(tasksInput))) {
+        tasksError.textContent = "Enter a valid number of tasks.";
+        valid = false;
+    }
+
+    return valid;
+}
+
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    if (validateSubject() === false) {
         return;
     }
 
-    if (!Number.isInteger(tasks) || tasks < 0 || form.querySelector('input[type="number"]').value.trim() === "") {
-        error.textContent = "Enter a valid number of tasks (0 or more).";
-        return;
-    }
+    const name = document.getElementById("subject-name").value.trim();
+    const description = document.getElementById("subject-description").value.trim();
+    const tasks = Number(document.getElementById("subject-tasks").value);
 
-    subjects.push({ name, description, tasks });
+    subjects.push({
+        name: name,
+        description: description,
+        tasks: tasks
+    });
+
     saveSubjects();
-    showSubjects(search ? search.value : "");
-
-    error.textContent = "Subject added successfully!";
+    showSubjects();
     form.reset();
+
+    let message = form.querySelector(".form-success");
+
+    if (message === null) {
+        message = document.createElement("p");
+        message.className = "form-success";
+        form.appendChild(message);
+    }
+
+    message.textContent = "Subject added successfully!";
 });
 
-if (search) {
-    search.addEventListener("input", function() {
-        showSubjects(search.value);
-    });
-}
+window.addEventListener("pageshow", showSubjects);
 
 showSubjects();

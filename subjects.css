@@ -287,3 +287,16 @@
     padding: 10px 20px;
     cursor: pointer;
 }
+
+.field-error {
+    display: block;
+    color: #c0395a;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.form-success {
+    color: #398052;
+    font-size: 14px;
+    margin-top: 10px;
+}

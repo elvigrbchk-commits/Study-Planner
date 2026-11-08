@@ -1,67 +1,64 @@
 
+const defaultSubjects = [
+    { name: "Operating Systems" },
+    { name: "Web Technologies" },
+    { name: "Finance" },
+    { name: "Analytical Methods" }
+];
+
+const defaultTasks = [
+    { name: "Complete Linux assignment", subject: "Operating Systems", date: "2026-11-10", completed: false },
+    { name: "Create the Tasks page", subject: "WEB Technologies 1", date: "2026-11-12", completed: true },
+    { name: "Review the Bridge pattern", subject: "Software Design Patterns", date: "2026-11-15", completed: false }
+];
+
 let subjects = [];
-
-function loadSubjects() {
-    const saved = localStorage.getItem("subjects");
-
-    const defaultSubjects = [
-        { name: "Operating Systems" },
-        { name: "Web Technologies" },
-        { name: "Finance" },
-        { name: "Analytical Methods" }
-    ];
-
-    const subjectList = saved === null
-        ? defaultSubjects
-        : JSON.parse(saved);
-
-    subjects = subjectList.map(subject => subject.name);
-
-    // Include subjects used by existing tasks
-    for (const task of tasks) {
-        if (!subjects.includes(task.subject)) {
-            subjects.push(task.subject);
-        }
-    }
-}
-
-
 let tasks = [];
 
 function loadTasks() {
-    let savedTasks = localStorage.getItem("studyPlannerTasks");
+    const saved = localStorage.getItem("studyPlannerTasks");
 
-    if (savedTasks !== null) {
-        tasks = JSON.parse(savedTasks);
+    if (saved === null) {
+        tasks = defaultTasks;
     } else {
-        tasks = [
-            {
-                name: "Complete Linux assignment",
-                subject: "Operating Systems",
-                date: "2026-11-10",
-                completed: false
-            },
-            {
-                name: "Create the Tasks page",
-                subject: "WEB Technologies 1",
-                date: "2026-11-12",
-                completed: true
-            },
-            {
-                name: "Review the Bridge pattern",
-                subject: "Software Design Patterns",
-                date: "2026-11-15",
-                completed: false
+        tasks = JSON.parse(saved);
+    }
+}
+
+function loadSubjects() {
+    const saved = localStorage.getItem("subjects");
+    let subjectList = defaultSubjects;
+
+    if (saved !== null) {
+        subjectList = JSON.parse(saved);
+    }
+
+    subjects = [];
+
+    for (const subject of subjectList) {
+        subjects.push(subject.name);
+    }
+
+    for (const task of tasks) {
+        let found = false;
+
+        for (const subject of subjects) {
+            if (subject === task.subject) {
+                found = true;
             }
-        ];
+        }
+
+        if (found === false) {
+            subjects.push(task.subject);
+        }
     }
 }
 
 function countCompleted() {
     let completed = 0;
 
-    for (let i = 0; i < tasks.length; i++) {
-        if (tasks[i].completed === true) {
+    for (const task of tasks) {
+        if (task.completed === true) {
             completed++;
         }
     }
@@ -77,11 +74,10 @@ function calculateProgress() {
     return Math.round(countCompleted() / tasks.length * 100);
 }
 
-
 function updateSummary() {
-    let completed = countCompleted();
-    let total = tasks.length;
-    let percent = calculateProgress();
+    const completed = countCompleted();
+    const total = tasks.length;
+    const percent = calculateProgress();
 
     document.getElementById("completed-count").textContent =
         completed + " / " + total;
@@ -90,17 +86,15 @@ function updateSummary() {
         percent + "%";
 }
 
-
 function showSubjectProgress() {
-    let list = document.getElementById("subject-progress-list");
-
+    const list = document.getElementById("subject-progress-list");
     list.innerHTML = "";
 
-    for (let subject of subjects) {
+    for (const subject of subjects) {
         let total = 0;
         let completed = 0;
 
-        for (let task of tasks) {
+        for (const task of tasks) {
             if (task.subject === subject) {
                 total++;
 
@@ -116,47 +110,40 @@ function showSubjectProgress() {
             percent = Math.round(completed / total * 100);
         }
 
-       
-        let row = document.createElement("article");
+        const row = document.createElement("article");
         row.className = "subject-row";
 
-        let heading = document.createElement("div");
+        const heading = document.createElement("div");
         heading.className = "subject-heading";
 
-        let title = document.createElement("h3");
+        const title = document.createElement("h3");
         title.textContent = subject;
 
-        let description = document.createElement("p");
+        const description = document.createElement("p");
         description.textContent =
             completed + " of " + total + " tasks completed";
 
-        heading.appendChild(title);
-        heading.appendChild(description);
+        heading.append(title, description);
 
-        // Create progress bar
-        let track = document.createElement("div");
+        const track = document.createElement("div");
         track.className = "progress-track";
 
-        let bar = document.createElement("progress");
+        const bar = document.createElement("progress");
         bar.max = 100;
         bar.value = percent;
         bar.setAttribute("aria-label", subject + " progress");
 
-        let number = document.createElement("span");
+        const number = document.createElement("span");
         number.textContent = percent + "%";
 
-        track.appendChild(bar);
-        track.appendChild(number);
-
-        row.appendChild(heading);
-        row.appendChild(track);
-
+        track.append(bar, number);
+        row.append(heading, track);
         list.appendChild(row);
     }
 }
 
 function showMotivation() {
-    let percent = calculateProgress();
+    const percent = calculateProgress();
     let message = "";
 
     if (tasks.length === 0) {
@@ -174,29 +161,26 @@ function showMotivation() {
     document.getElementById("motivation-text").textContent = message;
 }
 
-
 function showCompletedTasks() {
-    let list = document.getElementById("completed-list");
+    const list = document.getElementById("completed-list");
     list.innerHTML = "";
 
     let completedCount = 0;
 
-    for (let task of tasks) {
+    for (const task of tasks) {
         if (task.completed === true) {
             completedCount++;
 
-            let item = document.createElement("div");
+            const item = document.createElement("div");
             item.className = "completed-item";
 
-            let name = document.createElement("strong");
+            const name = document.createElement("strong");
             name.textContent = "✓ " + task.name;
 
-            let subject = document.createElement("p");
+            const subject = document.createElement("p");
             subject.textContent = task.subject;
 
-            item.appendChild(name);
-            item.appendChild(subject);
-
+            item.append(name, subject);
             list.appendChild(item);
         }
     }
@@ -205,7 +189,6 @@ function showCompletedTasks() {
         list.textContent = "No completed tasks yet.";
     }
 }
-
 
 function updateProgress() {
     loadTasks();
@@ -216,29 +199,21 @@ function updateProgress() {
     showCompletedTasks();
 }
 
+document.getElementById("refresh-progress").addEventListener("click", function () {
+    updateProgress();
 
-document.getElementById("refresh-progress").addEventListener(
-    "click",
-    function() {
-        updateProgress();
+    $("#motivation-text").hide().fadeIn(400);
+});
 
-        $("#motivation-text")
-            .stop(true, true)
-            .hide()
-            .fadeIn(400);
-    }
-);
-
-
-$("#show-completed").on("click", function() {
-    let list = $("#completed-list");
+$("#show-completed").on("click", function () {
+    const list = $("#completed-list");
 
     if (list.prop("hidden")) {
         list.prop("hidden", false);
         list.hide().slideDown(300);
         $(this).text("Hide Completed Tasks");
     } else {
-        list.slideUp(300, function() {
+        list.slideUp(300, function () {
             list.prop("hidden", true);
         });
 
@@ -247,4 +222,5 @@ $("#show-completed").on("click", function() {
 });
 
 window.addEventListener("pageshow", updateProgress);
+
 updateProgress();

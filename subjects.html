@@ -56,24 +56,23 @@
                 <summary>+ Add Subject</summary>
 
                 <form class="subject-form">
-
+                    
                     <label>
                         Subject Name
-                        <input type="text"
-                               placeholder="Enter subject">
+                        <input type="text" id="subject-name" placeholder="Enter subject">
+                        <small id="name-error" class="field-error"></small>
                     </label>
-
+                    
                     <label>
                         Description
-                        <input type="text"
-                               placeholder="Enter description">
+                        <input type="text" id="subject-description" placeholder="Enter description">
+                        <small id="description-error" class="field-error"></small>
                     </label>
-
+                    
                     <label>
                         Number of Tasks
-                        <input type="number"
-                               min="0"
-                               placeholder="Enter tasks">
+                        <input type="number" id="subject-tasks" min="0" placeholder="Enter tasks">
+                        <small id="tasks-error" class="field-error"></small>
                     </label>
 
                     <button type="submit">Add</button>
