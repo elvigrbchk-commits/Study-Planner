@@ -102,3 +102,10 @@ body > footer.footer > .footer-links > a.footer-link {
     body > footer.footer { flex-direction: column; text-align: center; }
     body > footer.footer > .footer-links { flex-wrap: wrap; justify-content: center; }
 }
+
+.dashboard-header h1,
+.subjects-header h1,
+.tasks-page h1,
+.progress-intro h1 {
+    font-weight: 700;
+}
