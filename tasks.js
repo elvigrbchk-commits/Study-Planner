@@ -1,4 +1,23 @@
 let subjects = [];
+class Task {
+    constructor(name, subject, date, completed) {
+        this.name = name;
+        this.subject = subject;
+        this.date = date;
+        this.completed = completed;
+    }
+
+    markCompleted() {
+        this.completed = true;
+    }
+
+    updateTask(name, subject, date) {
+        this.name = name;
+        this.subject = subject;
+        this.date = date;
+    }
+}
+
 let tasks = [
     {
         name: "Complete Linux assignment",
@@ -27,8 +46,20 @@ function loadTasks() {
         let data = JSON.parse(saved);
 
         if (Array.isArray(data)) {
-            tasks = data;
-        }
+    tasks = [];
+
+    for (let i = 0; i < data.length; i++) {
+        let task = new Task(
+            data[i].name,
+            data[i].subject,
+            data[i].date,
+            data[i].completed
+        );
+
+        tasks.push(task);
+    }
+
+    }
     }
 }
 
@@ -288,9 +319,9 @@ if (newDate === "" || isNaN(selectedDate.getTime()) || selectedDate < today) {
     return;
 }
 
-tasks[i].name = newName;
-tasks[i].subject = newSubject;
-tasks[i].date = newDate;
+
+
+tasks[i].updateTask(newName, newSubject, newDate);
 
 saveTasks();
 showTasks();
@@ -399,12 +430,8 @@ document.getElementById("add-task-form").addEventListener(
         let subject = document.getElementById("new-task-subject").value;
         let date = document.getElementById("new-task-date").value;
 
-        let newTask = {
-            name: name,
-            subject: subject,
-            date: date,
-            completed: false
-        };
+
+        let newTask = new Task(name, subject, date, false);
 
         tasks.push(newTask);
         saveTasks();
@@ -480,9 +507,15 @@ function showCustomGoals() {
         }
 
         checkbox.addEventListener("change", function() {
-            customGoals[i].completed = checkbox.checked;
-            saveCustomGoals();
-            showCustomGoals();
+
+            if (checkbox.checked === true) {
+            tasks[i].markCompleted();
+            } else {
+            tasks[i].completed = false;
+            }
+
+            saveTasks();
+            showTasks();
         });
 
         let deleteButton = document.createElement("button");
