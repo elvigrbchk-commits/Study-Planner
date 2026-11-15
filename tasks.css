@@ -720,3 +720,26 @@ body {
         flex-direction: column;
     }
 }
+
+.edit-task {
+    background: #e58090;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.edit-task:hover {
+    background: #cc6478;
+}
+
+@media (max-width: 576px) {
+    .edit-task {
+        padding: 7px 10px;
+        font-size: 12px;
+    }
+}
