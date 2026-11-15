@@ -18,7 +18,7 @@ let tasks = [
         date: "2026-11-15",
         completed: false
     }
-];
+]
 
 function loadTasks() {
     let saved = localStorage.getItem("studyPlannerTasks");
@@ -245,10 +245,14 @@ function showTasks() {
         deleteButton.type = "button";
 
         deleteButton.addEventListener("click", function() {
-            tasks.splice(i, 1);
-            saveTasks();
-            showTasks();
-        });
+            let answer = confirm("Are you sure you want to delete this task?");
+
+            if (answer === true) {
+                tasks.splice(i, 1);
+                saveTasks();
+                showTasks();
+            }
+});
 
         item.appendChild(checkbox);
         item.appendChild(info);
@@ -372,7 +376,99 @@ focus.addEventListener("input", function() {
     localStorage.setItem("studyPlannerFocus", focus.value);
 });
 
-let goals = document.querySelectorAll(".goal-item input");
+let goals = document.querySelectorAll(".goal-item input")
+
+let customGoals = [];
+
+let savedGoals = localStorage.getItem("customStudyGoals");
+
+if (savedGoals !== null) {
+    try {
+        let data = JSON.parse(savedGoals);
+
+        if (Array.isArray(data)) {
+            customGoals = data;
+        }
+    } catch (error) {
+        customGoals = [];
+    }
+}
+
+function saveCustomGoals() {
+    localStorage.setItem("customStudyGoals", JSON.stringify(customGoals));
+}
+
+function showCustomGoals() {
+    let container = document.getElementById("custom-goals");
+    container.innerHTML = "";
+
+    for (let i = 0; i < customGoals.length; i++) {
+        let goal = customGoals[i];
+
+        let row = document.createElement("div");
+        row.className = "custom-goal-item";
+
+        let checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = goal.completed;
+
+        let label = document.createElement("span");
+        label.textContent = goal.name;
+
+        if (goal.completed === true) {
+            label.style.textDecoration = "line-through";
+        }
+
+        checkbox.addEventListener("change", function() {
+            customGoals[i].completed = checkbox.checked;
+            saveCustomGoals();
+            showCustomGoals();
+        });
+
+        let deleteButton = document.createElement("button");
+        deleteButton.type = "button";
+        deleteButton.textContent = "Delete";
+
+        deleteButton.addEventListener("click", function() {
+            if (confirm("Delete this goal?")) {
+                customGoals.splice(i, 1);
+                saveCustomGoals();
+                showCustomGoals();
+            }
+        });
+
+        row.appendChild(checkbox);
+        row.appendChild(label);
+        row.appendChild(deleteButton);
+        container.appendChild(row);
+    }
+}
+
+document.getElementById("add-goal-btn").addEventListener("click", function() {
+    let input = document.getElementById("new-goal");
+    let error = document.getElementById("goal-error");
+    let name = input.value.trim();
+
+    error.textContent = "";
+
+    if (name.length < 3) {
+        error.textContent = "Enter at least 3 characters.";
+        return;
+    }
+
+    let newGoal = {
+        name: name,
+        completed: false
+    };
+
+    customGoals.push(newGoal);
+    saveCustomGoals();
+    showCustomGoals();
+
+    input.value = "";
+});
+
+showCustomGoals()
 
 for (let i = 0; i < goals.length; i++) {
     let goal = goals[i];
