@@ -217,9 +217,46 @@ function updateProgress() {
     loadSubjects();
     updateSummary();
     showSubjectProgress();
+    showAnalytics();
     showMotivation();
     showCompletedTasks();
 }
+
+function showAnalytics() {
+    let completed = 0;
+    let pending = 0;
+    let overdue = 0;
+
+    let today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].completed === true) {
+            completed++;
+        } else {
+            pending++;
+
+            let dueDate = new Date(tasks[i].date + "T00:00:00");
+
+            if (dueDate < today) {
+                overdue++;
+            }
+        }
+    }
+
+    document.getElementById("analytics-completed").textContent = completed;
+    document.getElementById("analytics-pending").textContent = pending;
+    document.getElementById("analytics-overdue").textContent = overdue;
+
+    let percent = calculateProgress();
+
+    document.getElementById("analytics-completed-bar").style.width =
+        percent + "%";
+
+    document.getElementById("analytics-chart-label").textContent =
+        percent + "% completed";
+}
+
 
 document.getElementById("refresh-progress").addEventListener(
     "click",

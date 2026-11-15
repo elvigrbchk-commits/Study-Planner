@@ -56,8 +56,40 @@
             </p>
         </section>
 
+        <section class="study-analytics">
+            <h2>Study Analytics 📊</h2>
+
+            <div class="analytics-cards">
+                <article class="analytics-card">
+                    <h3>Completed</h3>
+                    <p id="analytics-completed">0</p>
+                </article>
+
+                <article class="analytics-card">
+                    <h3>Pending</h3>
+                    <p id="analytics-pending">0</p>
+                </article>
+
+                <article class="analytics-card">
+                    <h3>Overdue</h3>
+                    <p id="analytics-overdue">0</p>
+                </article>
+            </div>
+
+            <h3>Task Completion</h3>
+
+            <div class="analytics-chart">
+                <div class="analytics-bar">
+                    <div id="analytics-completed-bar"></div>
+                </div>
+
+                <p id="analytics-chart-label">0% completed</p>
+            </div>
+        </section>
+
         <section class="progress-extra">
             <h2>Study Motivation 💗</h2>
+
             <p id="motivation-text">
                 Keep going! You are doing great.
             </p>
@@ -79,15 +111,14 @@
 
     </main>
 
-   
-<footer class="footer">
-    <p>&copy; 2026 STUDY PLANNER</p>
+    <footer class="footer">
+        <p>&copy; 2026 STUDY PLANNER</p>
 
-    <div class="footer-links">
-        <a href="contact.html" class="footer-link">Contact us</a>
-        <a href="about.html" class="footer-link">About us</a>
-    </div>
-</footer>
+        <div class="footer-links">
+            <a href="contact.html" class="footer-link">Contact us</a>
+            <a href="about.html" class="footer-link">About us</a>
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="progress.js"></script>

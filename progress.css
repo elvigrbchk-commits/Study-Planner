@@ -427,3 +427,77 @@ body {
 .progress-intro h1 {
     font-weight: 700;
 }
+
+.study-analytics {
+    background: #fffafa;
+    border: 1px solid #ffb6c1;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 24px 0;
+}
+
+.study-analytics h2 {
+    margin-bottom: 24px;
+}
+
+.analytics-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.analytics-card {
+    background: #fff0f3;
+    border: 1px solid #f5c5ce;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+}
+
+.analytics-card h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.analytics-card p {
+    font-size: 28px;
+    font-weight: 700;
+    color: #d85f76;
+    margin: 0;
+}
+
+.analytics-chart {
+    margin-top: 16px;
+}
+
+.analytics-bar {
+    width: 100%;
+    height: 20px;
+    background: #f5dce2;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#analytics-completed-bar {
+    width: 0;
+    height: 100%;
+    background: #e58090;
+    border-radius: 20px;
+    transition: width 0.4s;
+}
+
+#analytics-chart-label {
+    margin-top: 10px;
+    color: #a64d61;
+}
+
+@media (max-width: 576px) {
+    .study-analytics {
+        padding: 20px;
+    }
+
+    .analytics-cards {
+        grid-template-columns: 1fr;
+    }
+}
