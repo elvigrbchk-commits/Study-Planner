@@ -5,7 +5,27 @@ function loadTasks() {
     let saved = localStorage.getItem("studyPlannerTasks");
 
     if (saved !== null) {
-        tasks = JSON.parse(saved);
+        try {
+            let data = JSON.parse(saved);
+
+            if (Array.isArray(data)) {
+                tasks = [];
+
+                for (let i = 0; i < data.length; i++) {
+                    if (
+                        data[i] !== null &&
+                        typeof data[i].name === "string" &&
+                        typeof data[i].subject === "string" &&
+                        typeof data[i].date === "string" &&
+                        typeof data[i].completed === "boolean"
+                    ) {
+                        tasks.push(data[i]);
+                    }
+                }
+            }
+        } catch (error) {
+            tasks = [];
+        }
     } else {
         tasks = [
             {
@@ -41,8 +61,32 @@ function loadSubjects() {
     ];
 
     if (saved !== null) {
-        subjectList = JSON.parse(saved);
+    try {
+        let data = JSON.parse(saved);
+
+        if (Array.isArray(data)) {
+            let validSubjects = [];
+
+            for (let i = 0; i < data.length; i++) {
+                if (
+                    data[i] !== null &&
+                    typeof data[i].name === "string"
+                ) {
+                    validSubjects.push(data[i]);
+                }
+            }
+
+            subjectList = validSubjects;
+        }
+    } catch (error) {
+        subjectList = [
+            { name: "Operating Systems" },
+            { name: "Web Technologies" },
+            { name: "Finance" },
+            { name: "Analytical Methods" }
+        ];
     }
+}
 
     subjects = [];
 

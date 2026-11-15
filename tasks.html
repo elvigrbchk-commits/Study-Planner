@@ -162,6 +162,39 @@
 </aside>
 
 </div>
+
+<section class="study-resources">
+    <h2>Study Resources 📚</h2>
+    <p>Find books to help you study your subjects.</p>
+
+    <p class="book-search-hint">
+    Search by subject, topic, or author. Try:
+</p>
+
+<div class="book-suggestions">
+    <button type="button" class="book-suggestion" data-topic="JavaScript">JavaScript</button>
+    <button type="button" class="book-suggestion" data-topic="Finance">Finance</button>
+    <button type="button" class="book-suggestion" data-topic="Linux">Linux</button>
+    <button type="button" class="book-suggestion" data-topic="Web Design">Web Design</button>
+    <button type="button" class="book-suggestion" data-topic="Mathematics">Mathematics</button>
+</div>
+
+    <form id="book-search-form">
+        <input
+            type="text"
+            id="book-search-input"
+            placeholder="Enter a topic, for example JavaScript"
+            required
+        >
+        <button type="submit" id="book-search-button">
+            Search Books
+        </button>
+    </form>
+
+    <p id="book-search-status" role="status" aria-live="polite"></p>
+
+    <div id="book-results"></div>
+</section>
 </main>
 
 <footer class="footer">

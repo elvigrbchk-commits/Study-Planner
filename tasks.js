@@ -39,29 +39,46 @@ let tasks = [
     }
 ]
 
+
 function loadTasks() {
     let saved = localStorage.getItem("studyPlannerTasks");
 
     if (saved !== null) {
-        let data = JSON.parse(saved);
+        try {
+            let data = JSON.parse(saved);
 
-        if (Array.isArray(data)) {
-    tasks = [];
+            if (Array.isArray(data)) {
+                let loadedTasks = [];
 
-    for (let i = 0; i < data.length; i++) {
-        let task = new Task(
-            data[i].name,
-            data[i].subject,
-            data[i].date,
-            data[i].completed
-        );
+                for (let i = 0; i < data.length; i++) {
+                    let item = data[i];
 
-        tasks.push(task);
-    }
+                    if (
+                        item !== null &&
+                        typeof item.name === "string" &&
+                        typeof item.subject === "string" &&
+                        typeof item.date === "string" &&
+                        typeof item.completed === "boolean"
+                    ) {
+                        let task = new Task(
+                            item.name,
+                            item.subject,
+                            item.date,
+                            item.completed
+                        );
 
-    }
+                        loadedTasks.push(task);
+                    }
+                }
+
+                tasks = loadedTasks;
+            }
+        } catch (error) {
+            alert("Saved tasks could not be loaded.");
+        }
     }
 }
+
 
 function saveTasks() {
     localStorage.setItem("studyPlannerTasks", JSON.stringify(tasks));
@@ -78,10 +95,30 @@ function loadSubjects() {
     ];
 
     if (saved !== null) {
+    try {
         let data = JSON.parse(saved);
 
         if (Array.isArray(data)) {
-            subjectList = data;
+            let validSubjects = [];
+
+            for (let i = 0; i < data.length; i++) {
+                if (
+                    data[i] !== null &&
+                    typeof data[i].name === "string"
+                ) {
+                    validSubjects.push(data[i]);
+                }
+            }
+
+            subjectList = validSubjects;
+        }
+        } catch (error) {
+        subjectList = [
+            { name: "Operating Systems", description: "Linux commands and shell scripts." },
+            { name: "Web Technologies", description: "HTML, CSS and responsive web design." },
+            { name: "Finance", description: "Financial statements and analysis." },
+            { name: "Analytical Methods", description: "Probability and analytical methods." }
+            ];
         }
     }
 
@@ -244,9 +281,14 @@ function showTasks() {
         checkbox.setAttribute("aria-label", "Complete " + task.name);
 
         checkbox.addEventListener("change", function() {
-            tasks[i].completed = checkbox.checked;
-            saveTasks();
-            showTasks();
+         if (checkbox.checked === true) {
+        tasks[i].markCompleted();
+        } else {
+        tasks[i].completed = false;
+        }
+
+        saveTasks();
+        showTasks();
         });
 
         let info = document.createElement("div");
@@ -341,9 +383,6 @@ showTasks();
             }
 });
 
-        item.appendChild(checkbox);
-        item.appendChild(info);
-        item.appendChild(deleteButton);
         item.appendChild(checkbox);
         item.appendChild(info);
         item.appendChild(editButton);
@@ -507,15 +546,9 @@ function showCustomGoals() {
         }
 
         checkbox.addEventListener("change", function() {
-
-            if (checkbox.checked === true) {
-            tasks[i].markCompleted();
-            } else {
-            tasks[i].completed = false;
-            }
-
-            saveTasks();
-            showTasks();
+        customGoals[i].completed = checkbox.checked;
+        saveCustomGoals();
+        showCustomGoals();
         });
 
         let deleteButton = document.createElement("button");
@@ -605,3 +638,77 @@ window.addEventListener("pageshow", function() {
 loadTasks();
 loadSubjects();
 showTasks();
+
+document.getElementById("book-search-form").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    let topic = document.getElementById("book-search-input").value.trim();
+    let status = document.getElementById("book-search-status");
+    let results = document.getElementById("book-results");
+
+    results.innerHTML = "";
+
+    if (topic === "") {
+        status.textContent = "Please enter a topic.";
+        return;
+    }
+
+    status.textContent = "Loading books...";
+
+    try {
+        let response = await fetch(
+            "https://openlibrary.org/search.json?q=" +
+            encodeURIComponent(topic) + "&limit=6"
+        );
+
+        if (!response.ok) {
+            throw new Error("Failed to load books.");
+        }
+
+        let data = await response.json();
+
+        if (!Array.isArray(data.docs) || data.docs.length === 0) {
+            status.textContent = "No books found. Try another topic.";
+            return;
+        }
+
+        status.textContent = "Books found!";
+
+        for (let i = 0; i < data.docs.length; i++) {
+            let book = data.docs[i];
+
+            let card = document.createElement("article");
+            card.className = "book-card";
+
+            let title = document.createElement("h3");
+            title.textContent = book.title || "Unknown title";
+
+            let author = document.createElement("p");
+
+            if (book.author_name && book.author_name.length > 0) {
+                author.textContent = "Author: " + book.author_name[0];
+            } else {
+                author.textContent = "Author unknown";
+            }
+
+            card.appendChild(title);
+            card.appendChild(author);
+            results.appendChild(card);
+        }
+
+    } catch (error) {
+        status.textContent = "Could not load books. Please try again.";
+    }
+});
+
+let bookSuggestions = document.querySelectorAll(".book-suggestion");
+
+for (let i = 0; i < bookSuggestions.length; i++) {
+    bookSuggestions[i].addEventListener("click", function() {
+        let topic = bookSuggestions[i].getAttribute("data-topic");
+
+        document.getElementById("book-search-input").value = topic;
+
+        document.getElementById("book-search-form").requestSubmit();
+    });
+}

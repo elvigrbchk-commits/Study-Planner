@@ -743,3 +743,108 @@ body {
         font-size: 12px;
     }
 }
+
+.book-search-hint {
+    margin-top: 16px;
+    margin-bottom: 10px;
+    color: #9b5968;
+}
+
+.book-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.book-suggestion {
+    padding: 8px 14px;
+    border: 1px solid #e58090;
+    border-radius: 20px;
+    background: #fff0f3;
+    color: #a64d61;
+    cursor: pointer;
+}
+
+.book-suggestion:hover {
+    background: #e58090;
+    color: white;
+}
+
+.study-resources {
+    background: #fffafa;
+    border: 1px solid #ffb6c1;
+    border-radius: 20px;
+    padding: 28px;
+    margin: 28px 0;
+}
+
+.study-resources h2 {
+    margin-bottom: 12px;
+}
+
+#book-search-form {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+    margin-bottom: 16px;
+}
+
+#book-search-input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #f2b6c2;
+    border-radius: 10px;
+    background: #fff;
+}
+
+#book-search-button {
+    background: #e58090;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    cursor: pointer;
+}
+
+#book-search-button:hover {
+    background: #cc6478;
+}
+
+#book-results {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.book-card {
+    background: #fff0f3;
+    border: 1px solid #f5c5ce;
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.book-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.book-card p {
+    margin: 0;
+}
+
+@media (max-width: 576px) {
+    .study-resources {
+        padding: 18px;
+    }
+
+    #book-search-form {
+        flex-direction: column;
+    }
+
+    #book-results {
+        grid-template-columns: 1fr;
+    }
+}
