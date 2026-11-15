@@ -150,25 +150,36 @@ function showSubjectProgress() {
         list.appendChild(row);
     }
 }
+let motivationIndex = 0;
 
 function showMotivation() {
-    let percent = calculateProgress();
-    let message = "";
+    let messages = [
+        "Every small step matters. Keep going! 🌸",
+        "You are doing great! Keep studying! 💗",
+        "Believe in yourself and keep moving forward!",
+        "Small progress is still progress!",
+        "Stay focused. You can do this! ✨",
+        "One task at a time. You are getting closer!",
+        "Your hard work will pay off! 💕",
+        "Keep going! Your future self will thank you!"
+        ];
 
-    if (tasks.length === 0) {
-        message = "Add your first task to start tracking progress! 💗";
-    } else if (percent === 100) {
-        message = "Amazing! All tasks are completed! 🎉";
-    } else if (percent >= 70) {
-        message = "Almost there! Keep it up! 💗";
-    } else if (percent >= 40) {
-        message = "Good progress! You can do it!";
-    } else {
-        message = "Every small step matters. Keep going! 🌸";
+        if (tasks.length === 0) {
+        document.getElementById("motivation-text").textContent =
+            "Add your first task to start tracking progress! 💗";
+        return;
+        }
+
+        document.getElementById("motivation-text").textContent =
+        messages[motivationIndex];
+
+        motivationIndex++;
+
+        if (motivationIndex >= messages.length) {
+        motivationIndex = 0;
     }
-
-    document.getElementById("motivation-text").textContent = message;
 }
+
 
 function showCompletedTasks() {
     let list = document.getElementById("completed-list");
