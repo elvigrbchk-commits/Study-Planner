@@ -240,6 +240,62 @@ function showTasks() {
         info.appendChild(date);
 
         let deleteButton = document.createElement("button");
+        let editButton = document.createElement("button");
+        editButton.className = "edit-task";
+        editButton.textContent = "Edit";
+        editButton.type = "button";
+
+
+editButton.addEventListener("click", function() {
+    let newName = prompt("Edit task name:", tasks[i].name);
+
+    if (newName === null) {
+        return;
+    }
+
+    newName = newName.trim();
+
+    if (newName.length < 3) {
+        alert("Task name must have at least 3 characters.");
+        return;
+    }
+
+    let newSubject = prompt("Edit subject:", tasks[i].subject);
+
+if (newSubject === null) {
+    return;
+}
+
+newSubject = newSubject.trim();
+
+if (newSubject === "") {
+    alert("Subject cannot be empty.");
+    return;
+}
+
+let newDate = prompt("Edit deadline (YYYY-MM-DD):", tasks[i].date);
+
+if (newDate === null) {
+    return;
+}
+
+let selectedDate = new Date(newDate + "T00:00:00");
+let today = new Date();
+today.setHours(0, 0, 0, 0);
+
+if (newDate === "" || isNaN(selectedDate.getTime()) || selectedDate < today) {
+    alert("Enter a valid deadline that is not in the past.");
+    return;
+}
+
+tasks[i].name = newName;
+tasks[i].subject = newSubject;
+tasks[i].date = newDate;
+
+saveTasks();
+showTasks();
+});
+
         deleteButton.className = "delete-task";
         deleteButton.textContent = "Delete";
         deleteButton.type = "button";
@@ -256,6 +312,10 @@ function showTasks() {
 
         item.appendChild(checkbox);
         item.appendChild(info);
+        item.appendChild(deleteButton);
+        item.appendChild(checkbox);
+        item.appendChild(info);
+        item.appendChild(editButton);
         item.appendChild(deleteButton);
 
         list.appendChild(item);
