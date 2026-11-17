@@ -167,24 +167,37 @@ function showDashboard() {
         percent = Math.round(completed / tasks.length * 100);
     }
     
-    const summary = document.getElementById(
-        "dashboard-statistics"
-    );
     
-    const pending = tasks.filter(function(task) {
-        return task.completed === false;
-    }).length;
-    
-    const overdue = tasks.filter(function(task) {
-        return task.completed === false &&
-        task.date < today;
-    }).length;
-    
-    summary.textContent =
-        "Total: " + tasks.length +
-        " | Completed: " + completed +
-        " | Pending: " + pending +
-        " | Overdue: " + overdue;
+let pending = 0;
+let overdue = 0;
+
+for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].completed === false) {
+        pending++;
+
+        if (tasks[i].date < today) {
+            overdue++;
+        }
+    }
+}
+
+document.getElementById("total-count").textContent =
+    tasks.length;
+
+document.getElementById("completed-count").textContent =
+    completed;
+
+document.getElementById("pending-count").textContent =
+    pending;
+
+document.getElementById("overdue-count").textContent =
+    overdue;
+
+const details = document.querySelector(".statistics-details");
+
+if (!details.hidden) {
+    showStatistics(details.dataset.type);
+}
 
 
     progressBar.style.width = percent + "%";
@@ -260,3 +273,85 @@ window.addEventListener("pageshow", function () {
 
 loadDashboardSubjects();
 showDashboard();
+
+
+function showStatistics(type) {
+    loadTasks();
+
+    const details = document.querySelector(".statistics-details");
+    const title = document.getElementById("statistics-title");
+    const list = document.getElementById("statistics-list");
+
+    const today = todayString();
+
+    details.hidden = false;
+    details.dataset.type = type;
+    list.innerHTML = "";
+
+    title.textContent =
+        type.charAt(0).toUpperCase() + type.slice(1) + " Tasks";
+
+    let count = 0;
+
+    for (let i = 0; i < tasks.length; i++) {
+        const task = tasks[i];
+        let show = false;
+
+        if (type === "total") {
+            show = true;
+        }
+
+        if (type === "completed" && task.completed === true) {
+            show = true;
+        }
+
+        if (type === "pending" && task.completed === false) {
+            show = true;
+        }
+
+        if (type === "overdue" &&
+            task.completed === false &&
+            task.date < today) {
+            show = true;
+        }
+
+        if (show === true) {
+            count++;
+
+            const item = document.createElement("div");
+            item.className = "statistics-item";
+
+            const name = document.createElement("strong");
+            name.textContent = task.name;
+
+            const info = document.createElement("p");
+            info.textContent = task.subject + " | " + task.date;
+
+            item.appendChild(name);
+            item.appendChild(info);
+
+            list.appendChild(item);
+        }
+    }
+
+    if (count === 0) {
+        list.textContent = "No tasks found.";
+    }
+}
+
+const statButtons = document.querySelectorAll(".stat-card");
+
+for (let i = 0; i < statButtons.length; i++) {
+    statButtons[i].addEventListener("click", function() {
+        const type = this.dataset.type;
+
+        const details = document.querySelector(".statistics-details");
+
+        if (!details.hidden && details.dataset.type === type) {
+            details.hidden = true;
+        } else {
+            showStatistics(type);
+        }
+    });
+}
+

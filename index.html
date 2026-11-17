@@ -88,11 +88,36 @@
             </div>
 
         </section>
+        
+        <section class="dashboard-statistics">
+            
+            <button class="stat-card" data-type="total">
+                <span>Total</span>
+                <strong id="total-count">0</strong>
+            </button>
+            
+            <button class="stat-card" data-type="completed">
+                <span>Completed</span>
+                <strong id="completed-count">0</strong>
+            </button>
+            
+            <button class="stat-card" data-type="pending">
+                <span>Pending</span>
+                <strong id="pending-count">0</strong>
+            </button>
+            
+            <button class="stat-card" data-type="overdue">
+                <span>Overdue</span>
+                <strong id="overdue-count">0</strong>
+            </button>
+        
+        </section>
 
-        <p id="dashboard-statistics"
-            class="dashboard-statistics"
-            aria-live="polite">
-        </p>
+<section class="statistics-details" hidden>
+    <h2 id="statistics-title">Tasks</h2>
+    <div id="statistics-list"></div>
+</section>
+
 
         <section class="progress">
             <p>Overall Progress</p>
