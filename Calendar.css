@@ -62,8 +62,6 @@ body {
     box-sizing: border-box;
 }
 
-/* Calendar header */
-
 .calendar-header {
     position: relative;
     display: flex;
@@ -92,8 +90,6 @@ body {
     margin-left: auto;
     z-index: 1;
 }
-
-/* Month and week navigation */
 
 .month,
 .weekly-header {
@@ -146,8 +142,6 @@ body {
     background-color: #d85f70;
 }
 
-/* Upcoming */
-
 .upcoming {
     padding: 10px 0 15px;
 }
@@ -163,8 +157,6 @@ body {
     color: #8c5962;
     font-size: 14px;
 }
-
-/* Monthly calendar */
 
 .calendar-box {
     margin-top: 15px;
@@ -252,8 +244,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* Month / Week toggle */
-
 .calendar-view-toggle {
     display: flex;
     gap: 5px;
@@ -285,9 +275,6 @@ body {
 .calendar-view-toggle button.active:hover {
     background-color: #d85f70;
 }
-
-/* Weekly calendar */
-
 .weekly-calendar {
     display: block;
     margin-top: 20px;
@@ -406,9 +393,6 @@ body {
     color: #8c5962;
     text-align: center;
 }
-
-/* Footer */
-
 .footer {
     position: static;
     width: 100%;
@@ -444,13 +428,9 @@ body {
     background-color: #fff5f6;
 }
 
-/* Hidden elements */
-
 [hidden] {
     display: none !important;
 }
-
-/* Tablet */
 
 @media (max-width: 992px) {
     .menu {
@@ -467,10 +447,7 @@ body {
         padding-right: 20px;
     }
 }
-
-/* Mobile */
-
-@media (max-width: 576px) {
+@media (max-width: 790px) {
     .container {
         flex-direction: column;
     }
@@ -491,9 +468,6 @@ body {
         padding: 24px 16px;
         box-sizing: border-box;
     }
-
-    /* Header: title, navigation, toggle */
-
     .calendar-header {
         display: flex;
         flex-direction: column;
@@ -510,9 +484,6 @@ body {
         font-size: 25px;
         margin: 0;
     }
-
-    /* Month / Week navigation: full width, 56px high */
-
     .calendar-header .month,
     .calendar-header .weekly-header {
         position: static;
@@ -524,9 +495,6 @@ body {
         margin: 0;
         box-sizing: border-box;
     }
-
-    /* Month / Week toggle: full width, 56px high */
-
     .calendar-header .calendar-view-toggle {
         width: 100%;
         height: 56px;
@@ -546,9 +514,6 @@ body {
         padding: 0;
         font-size: 16px;
     }
-
-    /* Monthly calendar table */
-
     .calendar-box {
         width: 100%;
         padding: 12px;
@@ -581,9 +546,6 @@ body {
     .calendar-details {
         padding: 12px;
     }
-
-    /* Weekly calendar */
-
     .week-days {
         gap: 4px;
     }
@@ -604,8 +566,6 @@ body {
     .weekly-calendar h3 {
         font-size: 18px;
     }
-
-    /* Footer */
 
     .footer {
         flex-direction: column;
