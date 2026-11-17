@@ -284,3 +284,38 @@ document.getElementById("next-week").addEventListener("click", function () {
 
 showCalendar();
 showWeek();
+
+
+const monthViewBtn = document.getElementById("month-view-btn");
+const weekViewBtn = document.getElementById("week-view-btn");
+
+const monthCalendar = document.querySelector(".calendar-box");
+const weeklyCalendar = document.querySelector(".weekly-calendar");
+const monthNavigation = document.getElementById("month-navigation");
+const weeklyHeader = document.getElementById("weekly-header");
+
+function switchCalendarView(view) {
+    const isMonth = view === "month";
+
+    monthCalendar.hidden = !isMonth;
+    monthNavigation.hidden = !isMonth;
+    weeklyCalendar.hidden = isMonth;
+    weeklyHeader.hidden = isMonth;
+
+    monthViewBtn.classList.toggle("active", isMonth);
+    weekViewBtn.classList.toggle("active", !isMonth);
+
+    if (!isMonth) {
+        showWeek();
+    }
+}
+
+monthViewBtn.addEventListener("click", function() {
+    switchCalendarView("month");
+});
+
+weekViewBtn.addEventListener("click", function() {
+    switchCalendarView("week");
+});
+
+switchCalendarView("month");

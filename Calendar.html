@@ -19,63 +19,64 @@
                 <a href="progress.html" >Progress</a>
             </nav>
         </header>
-        <main class="calendar-page">
+       
+    <main class="calendar-page">
 
-    <div class="calendar-header">
-        <h1>Calendar</h1>
+        <div class="calendar-header">
+            <h1>Calendar</h1>
 
-        <div class="month">
-            <button id="prev-month" type="button">❮</button>
-            <span id="month-title"></span>
-            <button id="next-month" type="button">❯</button>
-        </div>
+            <div class="month" id="month-navigation">
+                <button id="prev-month" type="button">❮</button>
+                <span id="month-title"></span>
+                <button id="next-month" type="button">❯</button>
+            </div>
 
-    </div>
-
-    <section class="weekly-calendar">
-        <div class="weekly-header">
-            <h2 id="week-title">This Week</h2>
-            
-            <div class="week-buttons">
+            <div class="weekly-header" id="weekly-header" hidden>
                 <button id="prev-week" type="button">❮</button>
+                <h2 id="week-title">This Week</h2>
                 <button id="next-week" type="button">❯</button>
+            </div>
+
+            <div class="calendar-view-toggle">
+                <button type="button" id="month-view-btn" class="active">Month</button>
+                <button type="button" id="week-view-btn">Week</button>
             </div>
         </div>
 
-    <div class="week-days" id="week-days"></div>
+        <section class="weekly-calendar" id="week-view" hidden>
+            <div class="week-days" id="week-days"></div>
 
-    <h3>This Week's Tasks</h3>
-    <div id="week-tasks"></div>
-</section>
+            <h3>This Week's Tasks</h3>
+            <div id="week-tasks"></div>
+        </section>
 
-    <section class="calendar-box">
+        <section class="calendar-box" id="month-view">
 
-        <table class="calendar-table">
+            <table class="calendar-table">
+                <thead>
+                    <tr>
+                        <th>MON</th>
+                        <th>TUE</th>
+                        <th>WED</th>
+                        <th>THU</th>
+                        <th>FRI</th>
+                        <th>SAT</th>
+                        <th>SUN</th>
+                    </tr>
+                </thead>
 
-            <thead>
-                <tr>
-                    <th>MON</th>
-                    <th>TUE</th>
-                    <th>WED</th>
-                    <th>THU</th>
-                    <th>FRI</th>
-                    <th>SAT</th>
-                    <th>SUN</th>
-                </tr>
-            </thead>
+                <tbody id="calendar-days"></tbody>
+            </table>
 
-            <tbody id="calendar-days"></tbody>
+            <div class="calendar-details">
+                <h3 id="selected-date">Select a date</h3>
+                <div id="day-tasks">Click a date to see tasks.</div>
+            </div>
 
-        </table>
-
-        <div class="calendar-details">
-            <h3 id="selected-date">Select a date</h3>
-            <div id="day-tasks">Click a date to see tasks.</div>
-        </div>
-
-    </section>
+        </section>
 
     </main>
+
             <footer class="footer">
         <p>&copy; 2026 STUDY PLANNER</p>
         <div class="footer-links"> 
