@@ -528,3 +528,9 @@ body {
 .dashboard-header h1 {
     font-weight: 700;
 }
+
+.dashboard-statistics {
+    color: #8c5962;
+    margin: 24px 0 0;
+    font-size: 16px;
+}

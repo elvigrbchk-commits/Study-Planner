@@ -68,12 +68,6 @@
                         <input type="text" id="subject-description" placeholder="Enter description">
                         <small id="description-error" class="field-error"></small>
                     </label>
-                    
-                    <label>
-                        Number of Tasks
-                        <input type="number" id="subject-tasks" min="0" placeholder="Enter tasks">
-                        <small id="tasks-error" class="field-error"></small>
-                    </label>
 
                     <button type="submit">Add</button>
 
@@ -83,134 +77,22 @@
 
         </section>
 
+        <div class="subject-tools">
+            <label for="subject-search">Search Subjects</label>
+            
+            <input
+            type="search"
+            id="subject-search"
+            placeholder="Search subjects..."
+            >
+            
+            <span id="subjects-count"></span>
+        </div>
+
+<p id="subject-feedback" role="status"
+   aria-live="polite"></p>
+
         <section class="subjects-grid row g-4">
-
-            <div class="col-12 col-md-6">
-
-                <article class="subject-card h-100">
-
-                    <div class="card-title">
-                        <h2>Operating Systems</h2>
-                        <span>60%</span>
-                    </div>
-
-                    <p class="description">
-                        Linux commands and shell scripts.
-                    </p>
-
-                    <p>5 Tasks</p>
-
-                    <div class="progress">
-                        <div class="progress-bar"
-                             style="width: 60%;"
-                             role="progressbar"
-                             aria-valuenow="60"
-                             aria-valuemin="0"
-                             aria-valuemax="100">
-                        </div>
-                    </div>
-
-                    <a href="#">View Subject</a>
-
-                </article>
-
-            </div>
-
-
-            <div class="col-12 col-md-6">
-
-                <article class="subject-card h-100">
-
-                    <div class="card-title">
-                        <h2>Web Technologies</h2>
-                        <span>75%</span>
-                    </div>
-
-                    <p class="description">
-                        HTML, CSS and responsive web design.
-                    </p>
-
-                    <p>4 Tasks</p>
-
-                    <div class="progress">
-                        <div class="progress-bar"
-                             style="width: 75%;"
-                             role="progressbar"
-                             aria-valuenow="75"
-                             aria-valuemin="0"
-                             aria-valuemax="100">
-                        </div>
-                    </div>
-
-                    <a href="#">View Subject</a>
-
-                </article>
-
-            </div>
-
-            <div class="col-12 col-md-6">
-
-                <article class="subject-card h-100">
-
-                    <div class="card-title">
-                        <h2>Finance</h2>
-                        <span>50%</span>
-                    </div>
-
-                    <p class="description">
-                        Financial statements and analysis.
-                    </p>
-
-                    <p>3 Tasks</p>
-
-                    <div class="progress">
-                        <div class="progress-bar"
-                             style="width: 50%;"
-                             role="progressbar"
-                             aria-valuenow="50"
-                             aria-valuemin="0"
-                             aria-valuemax="100">
-                        </div>
-                    </div>
-
-                    <a href="#">View Subject</a>
-
-                </article>
-
-            </div>
-
-            <div class="col-12 col-md-6">
-
-                <article class="subject-card h-100">
-
-                    <div class="card-title">
-                        <h2>Analytical Methods</h2>
-                        <span>80%</span>
-                    </div>
-
-                    <p class="description">
-                        Probability and analytical methods.
-                    </p>
-
-                    <p>6 Tasks</p>
-
-                    <div class="progress">
-                        <div class="progress-bar"
-                             style="width: 80%;"
-                             role="progressbar"
-                             aria-valuenow="80"
-                             aria-valuemin="0"
-                             aria-valuemax="100">
-                        </div>
-                    </div>
-
-                    <a href="#">View Subject</a>
-
-                </article>
-
-            </div>
-
-
         </section>
 
     </main>

@@ -14,24 +14,42 @@ const defaultTasks = [
 
 let tasks = [];
 
+
 function loadDashboardSubjects() {
     const saved = localStorage.getItem("subjects");
+
     let subjects = defaultSubjects;
 
     if (saved !== null) {
-        subjects = JSON.parse(saved);
+        try {
+            subjects = JSON.parse(saved);
+
+            if (!Array.isArray(subjects)) {
+                subjects = defaultSubjects;
+            }
+        } catch (error) {
+            subjects = defaultSubjects;
+        }
     }
 
     const select = document.getElementById("dashboard-subject");
+
     select.innerHTML = '<option value="">Choose subject</option>';
 
-    for (const subject of subjects) {
+    for (let i = 0; i < subjects.length; i++) {
+        if (!subjects[i] || typeof subjects[i].name !== "string") {
+            continue;
+        }
+
         const option = document.createElement("option");
-        option.value = subject.name;
-        option.textContent = subject.name;
+
+        option.value = subjects[i].name;
+        option.textContent = subjects[i].name;
+
         select.appendChild(option);
     }
 }
+
 
 function loadTasks() {
     const saved = localStorage.getItem("studyPlannerTasks");
@@ -39,7 +57,15 @@ function loadTasks() {
     if (saved === null) {
         tasks = defaultTasks;
     } else {
-        tasks = JSON.parse(saved);
+        try {
+            tasks = JSON.parse(saved);
+
+            if (!Array.isArray(tasks)) {
+                tasks = defaultTasks;
+            }
+        } catch (error) {
+            tasks = defaultTasks;
+        }
     }
 }
 
@@ -140,6 +166,26 @@ function showDashboard() {
     if (tasks.length > 0) {
         percent = Math.round(completed / tasks.length * 100);
     }
+    
+    const summary = document.getElementById(
+        "dashboard-statistics"
+    );
+    
+    const pending = tasks.filter(function(task) {
+        return task.completed === false;
+    }).length;
+    
+    const overdue = tasks.filter(function(task) {
+        return task.completed === false &&
+        task.date < today;
+    }).length;
+    
+    summary.textContent =
+        "Total: " + tasks.length +
+        " | Completed: " + completed +
+        " | Pending: " + pending +
+        " | Overdue: " + overdue;
+
 
     progressBar.style.width = percent + "%";
     progressBar.setAttribute("aria-label", percent + "% completed");
@@ -211,3 +257,6 @@ window.addEventListener("pageshow", function () {
     loadDashboardSubjects();
     showDashboard();
 });
+
+loadDashboardSubjects();
+showDashboard();
