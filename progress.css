@@ -11,14 +11,8 @@ body {
     flex-direction: column;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #392d38;
-    background-color: #fdedee;
+    background-color: #fff5f6;
 }
-
-.logoHat {
-    width: 200px; 
-    filter: hue-rotate(50deg) brightness(1.18);
-}
-
 .container {
     width: 100%;
     max-width: none;
@@ -294,11 +288,6 @@ body {
     .container {
         flex-direction: column;
     }
-
-    .logoHat {
-        width: 130px;
-    }
-
     .menu {
         width: 100%;
         padding: 0 16px 20px;
@@ -397,11 +386,6 @@ body {
 
 #completed-list[hidden] {
     display: none;
-}
-
-body {
-    background-color: #fdedee;
-    color: #392d38;
 }
 
 .progress-page button {

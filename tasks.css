@@ -13,9 +13,6 @@ body {
     color: #392d38;
     background-color: #fff5f6;
 }
-.logoHat {
-    width: 200px;
-    filter: hue-rotate(50deg) brightness(1.18);}
 
 .container {
     width: 100%;
@@ -403,10 +400,6 @@ body {
 
     .container {
         flex-direction: column;
-    }
-
-    .logoHat {
-        width: 130px;
     }
 
     .menu {
