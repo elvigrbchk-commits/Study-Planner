@@ -48,7 +48,7 @@
         <section class="weekly-calendar" id="week-view" hidden>
             <div class="week-days" id="week-days"></div>
 
-            <h3>This Week's Tasks</h3>
+            <h3>This Week's Plans</h3>
             <div id="week-tasks"></div>
         </section>
 
@@ -71,12 +71,44 @@
                 </table>
             </div>
             <div class="calendar-details">
-                <h3 id="selected-date">Select a date</h3>
-                <div id="day-tasks">Click a date to see tasks.</div>
+                <div class="calendar-details-header">
+                    <h3 id="selected-date">Select a date</h3>
+                    <button type="button" id="add-entry-btn" class="add-entry-btn">
+                        + Add
+                    </button>
+                </div>
+
+                <div id="day-tasks">Your plans for this day will appear here.</div>
             </div>
 
         </section>
+        <div class="entry-modal" id="entry-modal" hidden>
+            <div class="entry-modal-content">
+                <div class="entry-modal-header">
+                    <h2 id="entry-modal-title">Add new entry</h2>
+                    <button type="button" id="close-entry-modal" class="close-modal">
+                        &times;
+                    </button>
+                </div>
 
+                <form id="entry-form">
+                    <label for="entry-type">Type</label>
+                    <select id="entry-type" required>
+                        <option value="">Select type</option>
+                        <option value="task">Task</option>
+                        <option value="activity">Activity</option>
+                        <option value="reminder">Reminder</option>
+                    </select>
+
+                    <div id="entry-fields"></div>
+
+                    <div class="entry-form-buttons">
+                        <button type="button" id="cancel-entry-btn">Cancel</button>
+                        <button type="submit" id="save-entry-btn">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </main>
 
             <footer class="footer">

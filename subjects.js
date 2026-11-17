@@ -18,7 +18,6 @@ const defaultSubjects = [
     }
 ];
 
-// OOP: Subject class
 class Subject {
     constructor(name, description) {
         this.name = name;
@@ -49,7 +48,6 @@ class Subject {
     }
 }
 
-// Safe localStorage reading
 function readArray(key, fallback) {
     try {
         const saved = localStorage.getItem(key);
@@ -114,7 +112,6 @@ function showMessage(text) {
     feedback.textContent = text;
 }
 
-// Display subject cards
 function showSubjects() {
     grid.innerHTML = "";
 
@@ -162,7 +159,6 @@ function showSubjects() {
             stats.completed + " of " +
             stats.total + " tasks completed";
 
-        // Progress bar
         const progress = document.createElement("div");
         progress.className = "progress";
 
@@ -181,7 +177,6 @@ function showSubjects() {
 
         progress.appendChild(bar);
 
-        // Buttons
         const actions = document.createElement("div");
         actions.className = "subject-actions";
 
@@ -266,7 +261,6 @@ function showSubjects() {
     }
 }
 
-// Reset add/edit form
 function resetForm() {
     editingIndex = -1;
     form.reset();
@@ -276,7 +270,6 @@ function resetForm() {
     ).textContent = "Add";
 }
 
-// Add or edit subject
 form.addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -302,7 +295,6 @@ form.addEventListener("submit", function(event) {
         return;
     }
 
-    // Check duplicate subject names
     const duplicate = subjects.some(function(subject, index) {
         return index !== editingIndex &&
             subject.name.toLowerCase() === name.toLowerCase();
@@ -320,8 +312,6 @@ form.addEventListener("submit", function(event) {
         const oldName = subjects[editingIndex].name;
 
         subjects[editingIndex].update(name, description);
-
-        // Update tasks when subject name changes
         if (oldName !== name) {
             const tasks = readArray("studyPlannerTasks", null);
 
@@ -357,10 +347,7 @@ form.addEventListener("submit", function(event) {
     );
 });
 
-// Search subjects
 searchInput.addEventListener("input", showSubjects);
-
-// Refresh data when returning to the page
 window.addEventListener("pageshow", function() {
     subjects = loadSubjects();
     showSubjects();
