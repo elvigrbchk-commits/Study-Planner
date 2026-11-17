@@ -109,3 +109,17 @@ body > footer.footer > .footer-links > a.footer-link {
 .progress-intro h1 {
     font-weight: 700;
 }
+.logo-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.logoHat {
+    transition: transform 0.2s ease;
+}
+
+.logo-link:hover .logoHat {
+    transform: scale(1.05);
+}
