@@ -261,6 +261,8 @@ body {
         flex: none;
         width: 100%;
     }
+}
+
 .dashboard-header h1 {
     font-weight: 700;
 }
@@ -348,4 +350,4 @@ body {
     .dashboard-statistics {
         grid-template-columns: repeat(2, 1fr);
     }
-}}
+}
