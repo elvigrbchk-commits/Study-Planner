@@ -261,6 +261,8 @@ body {
         flex: none;
         width: 100%;
     }
+.dashboard-header h1 {
+    font-weight: 700;
 }
 
 .dashboard-statistics {
@@ -296,6 +298,7 @@ body {
 
 .stat-card span {
     font-size: 16px;
+<<<<<<< HEAD
 }
 
 .stat-card strong {
@@ -346,4 +349,6 @@ body {
     .dashboard-statistics {
         grid-template-columns: repeat(2, 1fr);
     }
+=======
+>>>>>>> 2b19d47 (Adjust responsive navbar layout)
 }
