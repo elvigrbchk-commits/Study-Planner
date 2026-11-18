@@ -74,6 +74,7 @@
 
 .add-subject summary:hover {
     background-color: #d96f82;
+    transition: 0.3s;
 }
 
 .subject-form {
@@ -144,6 +145,7 @@
 
 .subject-form button:hover {
     background-color: #e58090;
+    transition: 0.3s;
 }
 
 .subjects-grid {
@@ -245,6 +247,7 @@
 .subject-card a:hover {
     color: #a70061;
     text-decoration: underline;
+    transition: 0.3s;
 }
 
 
@@ -304,9 +307,6 @@
     font-weight: 700;
 }
 
-
-/* Final project: Subjects */
-
 .subject-tools {
     display: flex;
     align-items: center;
@@ -355,6 +355,7 @@
 
 .subject-actions button:hover {
     background-color: #d85f70;
+    transition: 0.3s;
 }
 
 .subject-actions a {

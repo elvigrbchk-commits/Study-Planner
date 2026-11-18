@@ -465,6 +465,10 @@ body {
     cursor: pointer;
     font-family: inherit;
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
 .pink-button:hover {
@@ -472,6 +476,8 @@ body {
 }
 
 .delete-task {
+    width: 60px;
+    height: 30px;
     background-color: #fff0f2;
     color: #c34f65;
     border: 1px solid #ffc0cb;
@@ -677,17 +683,47 @@ body {
     min-width: 0;
     padding: 10px;
     border: 1px solid #e8cbd2;
-    border-radius: 8px;
+    border-radius: 15px;
 }
 
-.add-goal button,
-.custom-goal-item button {
+.add-goal button {
     padding: 8px 12px;
     border: none;
-    border-radius: 8px;
+    border-radius: 15px;
     background: #e58090;
     color: white;
     cursor: pointer;
+}
+.add-goal button:hover {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 15px;
+    background: #f098a7;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+.custom-goal-item button {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 10px;
+    background: #ffd0d8;
+    color: #e58090;
+    cursor: pointer;
+}
+
+.custom-goal-item button:hover {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 10px;
+    background: #ffabb9;
+    color: #ae4f5e;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .custom-goal-item {
@@ -718,13 +754,20 @@ body {
     background: #e58090;
     color: white;
     border: none;
-    border-radius: 8px;
+    width: 60px;
+    height: 30px;
+    border-radius: 10px;
     padding: 8px 14px;
     cursor: pointer;
     font-size: 14px;
     font-weight: 600;
     transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 }
+
 
 .edit-task:hover {
     background: #cc6478;
@@ -841,3 +884,12 @@ body {
         grid-template-columns: 1fr;
     }
 }
+/* .edit-task,
+.delete-task {
+    width: 60px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+} */

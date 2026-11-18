@@ -1,4 +1,3 @@
-
 const defaultSubjects = [
     { name: "Operating Systems" },
     { name: "Web Technologies" },

@@ -85,6 +85,9 @@
             <option value="pending">Pending</option>
             <option value="completed">Completed</option>
         </select>
+          <select id="subject-filter" aria-label="Filter by subject">
+        <option value="all">All Subjects</option>
+    </select>
     </div>
 
     <form id="add-task-form" class="task-form" novalidate hidden>
@@ -126,30 +129,14 @@
 <aside class="tasks-sidebar">
     <section class="goals-card">
         <h2>Study Goals</h2>
-
-        <div class="goal-item">
-            <input type="checkbox" id="goal-linux">
-            <label for="goal-linux">Practise Linux commands</label>
-        </div>
-
-        <div class="goal-item">
-            <input type="checkbox" id="goal-css">
-            <label for="goal-css">Revise Flexbox and Grid</label>
-        </div>
-
-        <div class="goal-item">
-            <input type="checkbox" id="goal-patterns">
-            <label for="goal-patterns">Understand the Bridge pattern</label>
-        </div>
-
-        <div class="add-goal">
-            <input type="text" id="new-goal" placeholder="Enter a new goal">
-            <button type="button" id="add-goal-btn">Add Goal</button>
-        </div>
-
+    
     <p id="goal-error"></p>
 
     <div id="custom-goals"></div>
+    <div class="add-goal">
+        <input type="text" id="new-goal" placeholder="Enter a new goal">
+        <button type="button" id="add-goal-btn">+ Add Goal</button>
+    </div>
     </section>
 
     <section class="focus-card">

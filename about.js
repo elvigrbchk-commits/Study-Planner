@@ -1,4 +1,3 @@
-
 const button = document.querySelector("#more-btn");
 const text = document.querySelector("#more-text");
 

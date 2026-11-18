@@ -1,4 +1,5 @@
 let subjects = [];
+
 class Task {
     constructor(name, subject, date, completed) {
         this.name = name;
@@ -37,8 +38,7 @@ let tasks = [
         date: "2026-11-15",
         completed: false
     }
-]
-
+];
 
 function loadTasks() {
     let saved = localStorage.getItem("studyPlannerTasks");
@@ -79,7 +79,6 @@ function loadTasks() {
     }
 }
 
-
 function saveTasks() {
     localStorage.setItem("studyPlannerTasks", JSON.stringify(tasks));
 }
@@ -95,29 +94,29 @@ function loadSubjects() {
     ];
 
     if (saved !== null) {
-    try {
-        let data = JSON.parse(saved);
+        try {
+            let data = JSON.parse(saved);
 
-        if (Array.isArray(data)) {
-            let validSubjects = [];
+            if (Array.isArray(data)) {
+                let validSubjects = [];
 
-            for (let i = 0; i < data.length; i++) {
-                if (
-                    data[i] !== null &&
-                    typeof data[i].name === "string"
-                ) {
-                    validSubjects.push(data[i]);
+                for (let i = 0; i < data.length; i++) {
+                    if (
+                        data[i] !== null &&
+                        typeof data[i].name === "string"
+                    ) {
+                        validSubjects.push(data[i]);
+                    }
                 }
-            }
 
-            subjectList = validSubjects;
-        }
+                subjectList = validSubjects;
+            }
         } catch (error) {
-        subjectList = [
-            { name: "Operating Systems", description: "Linux commands and shell scripts." },
-            { name: "Web Technologies", description: "HTML, CSS and responsive web design." },
-            { name: "Finance", description: "Financial statements and analysis." },
-            { name: "Analytical Methods", description: "Probability and analytical methods." }
+            subjectList = [
+                { name: "Operating Systems", description: "Linux commands and shell scripts." },
+                { name: "Web Technologies", description: "HTML, CSS and responsive web design." },
+                { name: "Finance", description: "Financial statements and analysis." },
+                { name: "Analytical Methods", description: "Probability and analytical methods." }
             ];
         }
     }
@@ -145,6 +144,8 @@ function loadSubjects() {
         option.textContent = subjects[i];
         select.appendChild(option);
     }
+
+    updateSubjectFilter();
 }
 
 function calculateProgress() {
@@ -250,10 +251,10 @@ function showSubjectCards() {
         container.appendChild(card);
     }
 }
-
 function showTasks() {
     let list = document.getElementById("tasks-list");
     let filter = document.getElementById("task-filter").value;
+    let subjectFilter = document.getElementById("subject-filter").value;
 
     list.innerHTML = "";
 
@@ -270,6 +271,10 @@ function showTasks() {
             continue;
         }
 
+        if (subjectFilter !== "all" && task.subject !== subjectFilter) {
+            continue;
+        }
+
         visible++;
 
         let item = document.createElement("article");
@@ -281,14 +286,14 @@ function showTasks() {
         checkbox.setAttribute("aria-label", "Complete " + task.name);
 
         checkbox.addEventListener("change", function() {
-         if (checkbox.checked === true) {
-        tasks[i].markCompleted();
-        } else {
-        tasks[i].completed = false;
-        }
+            if (checkbox.checked === true) {
+                tasks[i].markCompleted();
+            } else {
+                tasks[i].completed = false;
+            }
 
-        saveTasks();
-        showTasks();
+            saveTasks();
+            showTasks();
         });
 
         let info = document.createElement("div");
@@ -314,60 +319,67 @@ function showTasks() {
 
         let deleteButton = document.createElement("button");
         let editButton = document.createElement("button");
+
         editButton.className = "edit-task";
         editButton.textContent = "Edit";
         editButton.type = "button";
 
+        editButton.addEventListener("click", function() {
+            let newName = prompt("Edit task name:", tasks[i].name);
 
-editButton.addEventListener("click", function() {
-    let newName = prompt("Edit task name:", tasks[i].name);
+            if (newName === null) {
+                return;
+            }
 
-    if (newName === null) {
-        return;
-    }
+            newName = newName.trim();
 
-    newName = newName.trim();
+            if (newName.length < 3) {
+                alert("Task name must have at least 3 characters.");
+                return;
+            }
 
-    if (newName.length < 3) {
-        alert("Task name must have at least 3 characters.");
-        return;
-    }
+            let newSubject = prompt("Edit subject:", tasks[i].subject);
 
-    let newSubject = prompt("Edit subject:", tasks[i].subject);
+            if (newSubject === null) {
+                return;
+            }
 
-if (newSubject === null) {
-    return;
-}
+            newSubject = newSubject.trim();
 
-newSubject = newSubject.trim();
+            if (newSubject === "") {
+                alert("Subject cannot be empty.");
+                return;
+            }
 
-if (newSubject === "") {
-    alert("Subject cannot be empty.");
-    return;
-}
+            let newDate = prompt("Edit deadline (YYYY-MM-DD):", tasks[i].date);
 
-let newDate = prompt("Edit deadline (YYYY-MM-DD):", tasks[i].date);
+            if (newDate === null) {
+                return;
+            }
 
-if (newDate === null) {
-    return;
-}
+            let selectedDate = new Date(newDate + "T00:00:00");
+            let today = new Date();
+            today.setHours(0, 0, 0, 0);
 
-let selectedDate = new Date(newDate + "T00:00:00");
-let today = new Date();
-today.setHours(0, 0, 0, 0);
+            if (
+                newDate === "" ||
+                isNaN(selectedDate.getTime()) ||
+                selectedDate < today
+            ) {
+                alert("Enter a valid deadline that is not in the past.");
+                return;
+            }
 
-if (newDate === "" || isNaN(selectedDate.getTime()) || selectedDate < today) {
-    alert("Enter a valid deadline that is not in the past.");
-    return;
-}
+            tasks[i].updateTask(newName, newSubject, newDate);
 
+            if (!subjects.includes(newSubject)) {
+                subjects.push(newSubject);
+                updateSubjectFilter();
+            }
 
-
-tasks[i].updateTask(newName, newSubject, newDate);
-
-saveTasks();
-showTasks();
-});
+            saveTasks();
+            showTasks();
+        });
 
         deleteButton.className = "delete-task";
         deleteButton.textContent = "Delete";
@@ -381,7 +393,7 @@ showTasks();
                 saveTasks();
                 showTasks();
             }
-});
+        });
 
         item.appendChild(checkbox);
         item.appendChild(info);
@@ -469,13 +481,14 @@ document.getElementById("add-task-form").addEventListener(
         let subject = document.getElementById("new-task-subject").value;
         let date = document.getElementById("new-task-date").value;
 
-
         let newTask = new Task(name, subject, date, false);
 
         tasks.push(newTask);
         saveTasks();
 
         document.getElementById("task-filter").value = "all";
+        document.getElementById("subject-filter").value = "all";
+
         showTasks();
 
         document.getElementById("add-task-form").reset();
@@ -494,6 +507,13 @@ document.getElementById("task-filter").addEventListener(
     }
 );
 
+document.getElementById("subject-filter").addEventListener(
+    "change",
+    function() {
+        showTasks();
+    }
+);
+
 let focus = document.getElementById("daily-focus");
 
 focus.value = localStorage.getItem("studyPlannerFocus") || "";
@@ -502,7 +522,26 @@ focus.addEventListener("input", function() {
     localStorage.setItem("studyPlannerFocus", focus.value);
 });
 
-let goals = document.querySelectorAll(".goal-item input")
+function updateSubjectFilter() {
+    let filter = document.getElementById("subject-filter");
+    let currentValue = filter.value;
+
+    filter.innerHTML = '<option value="all">All Subjects</option>';
+
+    for (let i = 0; i < subjects.length; i++) {
+        let option = document.createElement("option");
+        option.value = subjects[i];
+        option.textContent = subjects[i];
+        filter.appendChild(option);
+    }
+
+    filter.value = currentValue;
+
+    if (filter.value !== currentValue) {
+        filter.value = "all";
+    }
+}
+let goals = document.querySelectorAll(".goal-item input");
 
 let customGoals = [];
 
@@ -546,14 +585,39 @@ function showCustomGoals() {
         }
 
         checkbox.addEventListener("change", function() {
-        customGoals[i].completed = checkbox.checked;
-        saveCustomGoals();
-        showCustomGoals();
+            customGoals[i].completed = checkbox.checked;
+            saveCustomGoals();
+            showCustomGoals();
+        });
+
+        let editButton = document.createElement("button");
+        editButton.type = "button";
+        editButton.textContent = "Edit";
+        editButton.className = "edit-goal";
+
+        editButton.addEventListener("click", function() {
+            let newName = prompt("Edit your goal:", customGoals[i].name);
+
+            if (newName === null) {
+                return;
+            }
+
+            newName = newName.trim();
+
+            if (newName.length < 3) {
+                alert("Goal must have at least 3 characters.");
+                return;
+            }
+
+            customGoals[i].name = newName;
+            saveCustomGoals();
+            showCustomGoals();
         });
 
         let deleteButton = document.createElement("button");
         deleteButton.type = "button";
         deleteButton.textContent = "Delete";
+        deleteButton.className = "delete-goal";
 
         deleteButton.addEventListener("click", function() {
             if (confirm("Delete this goal?")) {
@@ -565,7 +629,9 @@ function showCustomGoals() {
 
         row.appendChild(checkbox);
         row.appendChild(label);
+        row.appendChild(editButton);
         row.appendChild(deleteButton);
+
         container.appendChild(row);
     }
 }
@@ -594,7 +660,7 @@ document.getElementById("add-goal-btn").addEventListener("click", function() {
     input.value = "";
 });
 
-showCustomGoals()
+showCustomGoals();
 
 for (let i = 0; i < goals.length; i++) {
     let goal = goals[i];

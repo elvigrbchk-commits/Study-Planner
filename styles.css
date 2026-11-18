@@ -45,7 +45,7 @@ body {
     display: inline-block;
     padding: 12px 25px;
     color: #ffffff;
-    background-color: #ff93a3;
+    background-color: #e97f91;
     border-radius: 16px;
     cursor: pointer;
     list-style: none;
@@ -53,7 +53,8 @@ body {
 }
 
 .add-task summary:hover {
-    background-color: #e58090;
+    background-color: #d96f82;
+    transition: 0.3s;
 }
 
 .task-form {
@@ -115,6 +116,7 @@ body {
 
 .task-form button:hover {
     background-color: #e58090;
+    transition: 0.3s;
 }
 
 .dashboard-cards {
@@ -292,6 +294,7 @@ body {
 
 .stat-card:hover {
     background-color: #ffe4ea;
+    transition: 0.3s;
 }
 
 .stat-card:focus-visible {
