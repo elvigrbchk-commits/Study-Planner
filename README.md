@@ -1,18 +1,18 @@
-#Study Planner
+# Study Planner
 
-##Project Description
+## Project Description
 
 Study Planner is a web-based application designed to help students organize their academic workload and personal schedules. It provides a convenient interface for managing tasks, subjects, study goals, and calendar events, allowing users to keep track of deadlines, plan activities, and monitor their academic progress.
 
 The application combines academic planning with personal organization features through a dashboard, calendar, task management, subject management, goal tracking, and progress statistics.
 
-###Team Members
+### Team Members
 
 * Elvira Grabchuk — Dashboard and Calendar
 * Talshyn Otegen — Subjects, About Us, CSS
 * Aruzhan Marat — Tasks and Progress
 
-###Pages
+### Pages
 
 1. Dashboard
 2. Subjects
@@ -22,7 +22,7 @@ The application combines academic planning with personal organization features t
 6. About Us
 7. Contact Us
 
-###Project Features
+### Project Features
 
 1. Dashboard
 
@@ -76,7 +76,7 @@ The application combines academic planning with personal organization features t
 * View progress by subject.
 * Display statistics to help users evaluate their study workload.
 
-###Final Project Features
+### Final Project Features
 
 1. API Integration — Open Library
 
@@ -171,7 +171,7 @@ Technologies Used
 * JSON
 * Asynchronous JavaScript (async/await)
 
-##API Information
+## API Information
 
 API: Open Library
 
@@ -185,7 +185,7 @@ No API key is required.
 
 API requests are handled asynchronously. The interface provides feedback during loading, when results are found, when no results are available, and when an error occurs.
 
-##How to Run
+## How to Run
 
 1. Clone or download the repository:
 
@@ -204,20 +204,20 @@ git clone https://github.com/elvigrbchk-commits/Study-Planner.git
     * Search subjects and filter tasks.
 6. Refresh the website to test Local Storage and verify that previously saved data is restored.
 
-###GitHub Repository
+### GitHub Repository
 
 https://github.com/elvigrbchk-commits/Study-Planner
 
-###Published Website
+### Published Website
 
 https://elvigrbchk-commits.github.io/Study-Planner/
 
-##Project Structure
+## Project Structure
 
 The project contains separate HTML, CSS, and JavaScript files for individual pages and features. Page-specific scripts handle functionality, while shared design elements maintain consistency throughout the website.
 
 The code is organized to separate page structure, styling, data management, and interactive functionality.
 
-##Purpose
+## Purpose
 
 The purpose of Study Planner is to provide students with a practical tool for managing academic responsibilities, organizing schedules, tracking assignments, setting study goals, and maintaining a structured approach to studying.
