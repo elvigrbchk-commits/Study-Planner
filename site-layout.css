@@ -68,8 +68,18 @@ body > header.site-header > nav.menu > a[aria-current="page"] {
     background: #ff93a3;
     color: #fff;
 }
+body > header.site-header > nav.menu > a:hover[aria-current="page"] {
+    background: #ff8496;
+    border-radius: 25px;
+    height: 60px;
+    transition: 1s;
+}
 body > header.site-header > nav.menu > a:hover:not(.active) {
     color: #a70061;
+    background-color: #ffe0e6;
+    border-radius: 25px;
+    height: 60px;
+    transition: 1s;
 }
 
 body > footer.footer {
@@ -102,7 +112,11 @@ body > footer.footer > .footer-links > a.footer-link {
     font-size: 16px;
     line-height: 1.5;
 }
-
+body > footer.footer > .footer-links > a.footer-link:hover{
+    color: #c65060;
+    background: #ffd9dc;
+    transition: 0.3s;
+}
 @media (min-width: 1121px) {
     body > header.site-header {
         flex-direction: row;
